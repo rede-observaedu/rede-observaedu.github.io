@@ -422,7 +422,6 @@
                 <h1 data-i18n="header_title">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA</h1>
             </div>
             
-            <!-- Selector de 5 idiomas en orden exacto -->
             <div class="lang-selector">
                 <button onclick="setLanguage('pt')" id="btn-pt" class="lang-btn active">Português</button>
                 <button onclick="setLanguage('es')" id="btn-es" class="lang-btn">Castellano</button>
@@ -477,7 +476,7 @@
             </div>
 
             <div id="prompts-container" class="prompts-list">
-                <!-- Se cargarán dinámicamente desde Supabase -->
+                <!-- Carga dinámica desde la tabla prompts_observaedu -->
             </div>
         </section>
 
@@ -602,14 +601,16 @@
         <p><span data-i18n="support_label">Suporte e contato:</span> <a href="mailto:francesc.j.hernandez@uv.es">francesc.j.hernandez@uv.es</a></p>
     </footer>
 
-    <!-- SCRIPT DE TRADUCCIÓN, CHAT E INTERACTIVIDAD -->
+    <!-- SCRIPT -->
     <script>
-        // --- CONFIGURACIÓN DE SUPABASE ---
-        const SUPABASE_URL = "https://paxrolsjynqivoeltoyk.supabase.co";
-        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBheHJvbHNqeW5xaXZvZWx0b3lrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU2ODA4MTUsImV4cCI6MjEwMTI1NjgxNX0.8sYrtc7D5-_2keQPf2Ra-0Ff_lNC3PJkH0P6H9gqbXA";
-        const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+        // CONFIGURACIÓN DE SUPABASE CON TUS CREDENCIALES EXACTAS
+        const SUPABASE_URL = "https://amswkfdhwashotagrhfo.supabase.co"; 
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtc3drZmRod2FzaG90YWdyaGZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ4MjU5NzYsImV4cCI6MjEwMDQwMTk3Nn0.FOo2A10jlM5MlANoZqaiwTkI8K2AkCgbBLAlJnH4FO4";
+        const supabaseClient = (window.supabase && SUPABASE_URL !== "") 
+            ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) 
+            : null;
 
-        // URL del Endpoint Backend del Agente IA (a configurar)
+        // URL del Endpoint Backend del Agente IA
         const AGENT_API_URL = "https://tu-api-backend.vercel.app/api/chat";
 
         let allPrompts = [];
@@ -847,7 +848,7 @@
             });
         }
 
-        // LÓGICA DEL CHAT IA (SECCIÓN FAMILIAS)
+        // CHAT INTERACTIVO CON AGENTE IA (FAMILIAS)
         async function queryFamilyAI() {
             const inputEl = document.getElementById('family-query');
             const query = inputEl.value.trim();
@@ -895,7 +896,7 @@
             return msgId;
         }
 
-        // ENVIAR FORMULARIO MUNICIPIOS
+        // ENVÍO DE FORMULARIO PARA MUNICIPIOS
         function sendMuniForm(e) {
             e.preventDefault();
             const muni = document.getElementById('muni-name').value;
@@ -909,12 +910,12 @@
             window.location.href = `mailto:francesc.j.hernandez@uv.es?subject=${subject}&body=${body}`;
         }
 
-        // LÓGICA DE PROMPTS Y SUPABASE (Limpios de ejemplos innecesarios)
+        // LECTURA DE PROMPTS DESDE LA NUEVA TABLA
         async function fetchPrompts() {
             if (supabaseClient) {
                 try {
                     const { data, error } = await supabaseClient
-                        .from('prompts')
+                        .from('prompts_observaedu')
                         .select('*')
                         .order('created_at', { ascending: false });
 
@@ -963,7 +964,7 @@
             });
         }
 
-        // GESTIÓN DEL MODAL DE SUBIDA DE PROMPTS
+        // INICIALIZACIÓN DE LA PÁGINA Y MODAL
         document.addEventListener('DOMContentLoaded', () => {
             setLanguage('pt');
             fetchPrompts();
@@ -981,6 +982,7 @@
                 renderPrompts(filtered);
             });
 
+            // INSERCIÓN DE PROMPTS EN LA NUEVA TABLA
             document.getElementById('add-prompt-form').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const title = document.getElementById('new-prompt-title').value;
@@ -989,11 +991,17 @@
                 const body = document.getElementById('new-prompt-body').value;
 
                 if (supabaseClient) {
-                    const { error } = await supabaseClient.from('prompts').insert([{ title, author, category, body }]);
+                    const { error } = await supabaseClient
+                        .from('prompts_observaedu')
+                        .insert([{ title, author, category, body }]);
+
                     if (error) {
                         alert("Erro ao salvar no Supabase: " + error.message);
                         return;
                     }
+                } else {
+                    alert("Por favor, configure as credenciais do Supabase.");
+                    return;
                 }
                 alert("Prompt salvo com sucesso!");
                 modal.style.display = 'none';
