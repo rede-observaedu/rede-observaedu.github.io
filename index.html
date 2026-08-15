@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA</title>
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        :root {
+            --primary-green: #166534;
+            --primary-blue: #2563eb;
+            --blue-hover: #1d4ed8;
+            --bg-dark: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-green);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- CABECERA --- */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 1.25rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #f8fafc;
+            letter-spacing: -0.01em;
+        }
+
+        /* Selector de Idioma */
+        .lang-selector {
+            display: flex;
+            gap: 0.25rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 4px;
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+            flex-wrap: wrap;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #cbd5e1;
+            padding: 0.4rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .lang-btn.active {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        main {
+            max-width: 950px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* TARJETAS SECCION */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+            border-top: 6px solid var(--primary-blue);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            border-left: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: var(--bg-dark);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 0.5rem;
+        }
+
+        /* 1. PRESENTACION Y FOTO */
+        .image-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 340px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-caption {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            text-align: right;
+            width: 100%;
+            font-style: italic;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        /* FORMULARIOS E INPUTS */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+            border-color: var(--primary-blue);
+        }
+
+        /* BOTONES */
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--blue-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-dark {
+            background-color: var(--bg-dark);
+            color: #ffffff;
+        }
+
+        .btn-dark:hover {
+            background-color: #1e293b;
+        }
+
+        /* 3. DOCENTES & PROMPTS LIST */
+        .prompts-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .prompts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .prompt-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+        }
+
+        .prompt-title {
+            font-weight: 600;
+            color: var(--text-main);
+            flex: 1;
+        }
+
+        .btn-copy {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .btn-copy:hover {
+            background-color: #15803d;
+        }
+
+        /* 5. RELATORIOS */
+        .relatorios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .relatorio-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s;
+        }
+
+        .relatorio-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .relatorio-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .relatorio-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* MODAL DE SUBIDA DE PROMPTS */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #cbd5e1;
+            font-size: 0.875rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--bg-dark);
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA MULTILINGÜE -->
+    <header>
+        <div class="header-container">
+            <div class="logo-title">
+                <span class="logo-icon">🎓</span>
+                <h1 data-i18n="header_title">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA</h1>
+            </div>
+            
+            <div class="lang-selector">
+                <button onclick="setLanguage('pt')" id="btn-pt" class="lang-btn active">Português (BR)</button>
+                <button onclick="setLanguage('es')" id="btn-es" class="lang-btn">Castellano</button>
+                <button onclick="setLanguage('ca')" id="btn-ca" class="lang-btn">Català / Valencià</button>
+                <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">English</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- SECCIÓN 1: PRESENTACIÓN Y FOTO -->
+        <section class="card">
+            <div class="image-wrapper">
+                <img src="https://www.uv.es/senex/imatgeLlenguaAI.png" alt="Observatório de Igualdade Educativa">
+                <span class="image-caption" data-i18n="img_credit">Imagem UNESCO / Projecte Observatório</span>
+            </div>
+            <h2 class="card-title" data-i18n="sec1_title">Rede Observatório de Igualdade Educativa Inclusiva</h2>
+            <p class="hero-desc" data-i18n="sec1_desc">
+                Plataforma pública dedicada à promoção da igualdade, inclusão e inovação didática através da Inteligência Artificial na educação.
+            </p>
+        </section>
+
+        <!-- SECCIÓN 2: PARA LAS FAMILIAS -->
+        <section class="card" style="border-top-color: #10b981;">
+            <h2 class="card-title" data-i18n="sec2_title">👨‍👩‍👧‍👦 PARA AS FAMÍLIAS</h2>
+            <p data-i18n="sec2_desc">Consulte suas dúvidas sobre apoio socioeducativo, direitos e recursos de inclusão através do nosso Agente de IA:</p>
+            <div class="form-group">
+                <input type="text" id="family-query" data-i18n-ph="sec2_ph" placeholder="Escreva aqui a sua consulta para a IA...">
+            </div>
+            <div>
+                <button class="btn-primary" onclick="queryFamilyAI()" data-i18n="sec2_btn">Consultar Agente IA ➔</button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: PARA LOS DOCENTES (PROMPTS-MAESTROS) -->
+        <section class="card" style="border-top-color: var(--primary-blue);">
+            <div class="prompts-header">
+                <h2 class="card-title" style="border-bottom:none;" data-i18n="sec3_title">👩‍🏫 PARA OS DOCENTES</h2>
+                <button class="btn-primary btn-dark" id="btn-open-modal" data-i18n="sec3_upload_btn">📤 Carregar Prompt-Mestre</button>
+            </div>
+            <p data-i18n="sec3_desc">Acesse e compartilhe prompts-mestres para elaborar programações didáticas adaptadas e inclusivas:</p>
+            
+            <div class="form-group">
+                <input type="text" id="search-prompts" data-i18n-ph="sec3_search_ph" placeholder="Pesquisar prompts por palavra-chave, matéria ou autor...">
+            </div>
+
+            <div id="prompts-container" class="prompts-list">
+                <!-- Se cargarán dinámicamente desde Supabase -->
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: PARA LOS AYUNTAMIENTOS -->
+        <section class="card" style="border-top-color: #f59e0b;">
+            <h2 class="card-title" data-i18n="sec4_title">🏛️ PARA OS MUNICÍPIOS</h2>
+            <p data-i18n="sec4_desc">Formulário para a elaboração de Planos Educativos Municipais e assessoria socioeducativa:</p>
+            
+            <form id="muni-form" onsubmit="sendMuniForm(event)">
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label data-i18n="sec4_lbl_muni">Nome do Município / Prefeitura:</label>
+                    <input type="text" id="muni-name" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label data-i18n="sec4_lbl_contact">Pessoa e cargo de contato:</label>
+                    <input type="text" id="muni-contact" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label data-i18n="sec4_lbl_email">E-mail de contato:</label>
+                    <input type="email" id="muni-email" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label data-i18n="sec4_lbl_notes">Necessidades ou observações:</label>
+                    <textarea id="muni-notes" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn-primary" data-i18n="sec4_btn">Enviar Solicitação por E-mail</button>
+            </form>
+        </section>
+
+        <!-- SECCIÓN 5: PROYECTO Y RELATORIOS -->
+        <section class="card" style="border-top-color: #8b5cf6;">
+            <h2 class="card-title" data-i18n="sec5_title">📄 SOBRE O PROJETO E RELATÓRIOS</h2>
+            <p data-i18n="sec5_desc">Explore a documentação técnica e relatórios científicos do Observatório disponíveis para download:</p>
+            
+            <div class="relatorios-grid">
+                <a href="http://www.uv.es/fjhernan/relatorios/relatorio01.pdf" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4 data-i18n="relatorio_1">Título 01</h4>
+                        <p>relatorio01.pdf</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/fjhernan/relatorios/relatorio02.pdf" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4 data-i18n="relatorio_2">Título 02</h4>
+                        <p>relatorio02.pdf</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/fjhernan/relatorios/relatorio03.pdf" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4 data-i18n="relatorio_3">Título 03</h4>
+                        <p>relatorio03.pdf</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/fjhernan/relatorios/relatorio04.pdf" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4 data-i18n="relatorio_4">Título 04</h4>
+                        <p>relatorio04.pdf</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/fjhernan/relatorios/relatorio05.pdf" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4 data-i18n="relatorio_5">Título 05</h4>
+                        <p>relatorio05.pdf</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/fjhernan/relatorios/relatorio06.pdf" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4 data-i18n="relatorio_6">Título 06</h4>
+                        <p>relatorio06.pdf</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/fjhernan/relatorios/relatorio07.pdf" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4 data-i18n="relatorio_7">Título 07</h4>
+                        <p>relatorio07.pdf</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL DE SUBIDA DE PROMPTS PARA DOCENTES -->
+    <div id="upload-modal" class="modal">
+        <div class="modal-content">
+            <h3 data-i18n="modal_title">Carregar Prompt-Mestre</h3>
+            <form id="add-prompt-form">
+                <div class="form-group">
+                    <label data-i18n="modal_lbl_title">Título do Prompt</label>
+                    <input type="text" id="new-prompt-title" required>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="modal_lbl_author">Autor / Docente</label>
+                    <input type="text" id="new-prompt-author" required>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="modal_lbl_cat">Matéria / Nível</label>
+                    <input type="text" id="new-prompt-category">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="modal_lbl_body">Conteúdo do Prompt-Mestre</label>
+                    <textarea id="new-prompt-body" rows="5" required></textarea>
+                </div>
+                <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 1rem;">
+                    <button type="button" id="btn-close-modal" style="padding: 0.6rem 1.2rem; border-radius: 6px; border:none; cursor:pointer;" data-i18n="btn_cancel">Cancelar</button>
+                    <button type="submit" class="btn-primary" data-i18n="btn_save">Salvar Prompt</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p data-i18n="footer_text">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA © 2026 — Universitat de València</p>
+        <p><span data-i18n="support_label">Suporte e contato:</span> <a href="mailto:francesc.j.hernandez@uv.es">francesc.j.hernandez@uv.es</a></p>
+    </footer>
+
+    <!-- SCRIPT DE TRADUCCIÓN E INTERACTIVIDAD -->
+    <script>
+        // --- CONFIGURACIÓN DE SUPABASE (Colocar tus credenciales reales aquí) ---
+        const SUPABASE_URL = "https://paxrolsjynqivoeltoyk.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBheHJvbHNqeW5xaXZvZWx0b3lrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU2ODA4MTUsImV4cCI6MjEwMTI1NjgxNX0.8sYrtc7D5-_2keQPf2Ra-0Ff_lNC3PJkH0P6H9gqbXA";
+        const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
+        let allPrompts = [];
+
+        // TRADUCCIONES (Português de Brasil por defecto)
+        const translations = {
+            pt: {
+                page_title: "REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA",
+                header_title: "REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA",
+                img_credit: "Imagem UNESCO / Projecte Observatório",
+                sec1_title: "Rede Observatório de Igualdade Educativa Inclusiva",
+                sec1_desc: "Plataforma pública dedicada à promoção da igualdade, inclusão e inovação didática através da Inteligência Artificial na educação.",
+                sec2_title: "👨‍👩‍👧‍👦 PARA AS FAMÍLIAS",
+                sec2_desc: "Consulte suas dúvidas sobre apoio socioeducativo, direitos e recursos de inclusão através do nosso Agente de IA:",
+                sec2_ph: "Escreva aqui a sua consulta para a IA...",
+                sec2_btn: "Consultar Agente IA ➔",
+                sec3_title: "👩‍🏫 PARA OS DOCENTES",
+                sec3_upload_btn: "📤 Carregar Prompt-Mestre",
+                sec3_desc: "Acesse e compartilhe prompts-mestres para elaborar programações didáticas adaptadas e inclusivas:",
+                sec3_search_ph: "Pesquisar prompts por palavra-chave, matéria ou autor...",
+                sec4_title: "🏛️ PARA OS MUNICÍPIOS",
+                sec4_desc: "Formulário para a elaboração de Planos Educativos Municipais e assessoria socioeducativa:",
+                sec4_lbl_muni: "Nome do Município / Prefeitura:",
+                sec4_lbl_contact: "Pessoa e cargo de contato:",
+                sec4_lbl_email: "E-mail de contato:",
+                sec4_lbl_notes: "Necessidades ou observações:",
+                sec4_btn: "Enviar Solicitação por E-mail",
+                sec5_title: "📄 SOBRE O PROJETO E RELATÓRIOS",
+                sec5_desc: "Explore a documentação técnica e relatórios científicos do Observatório disponíveis para download:",
+                relatorio_1: "Título 01",
+                relatorio_2: "Título 02",
+                relatorio_3: "Título 03",
+                relatorio_4: "Título 04",
+                relatorio_5: "Título 05",
+                relatorio_6: "Título 06",
+                relatorio_7: "Título 07",
+                modal_title: "Carregar Prompt-Mestre",
+                modal_lbl_title: "Título do Prompt",
+                modal_lbl_author: "Autor / Docente",
+                modal_lbl_cat: "Matéria / Nível",
+                modal_lbl_body: "Conteúdo do Prompt-Mestre",
+                btn_cancel: "Cancelar",
+                btn_save: "Salvar Prompt",
+                footer_text: "REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA © 2026 — Universitat de València",
+                support_label: "Suporte e contato:"
+            },
+            es: {
+                page_title: "RED OBSERVATORIO DE IGUALDAD EDUCATIVA INCLUSIVA",
+                header_title: "RED OBSERVATORIO DE IGUALDAD EDUCATIVA INCLUSIVA",
+                img_credit: "Imagen UNESCO / Projecte Observatorio",
+                sec1_title: "Red Observatorio de Igualdad Educativa Inclusiva",
+                sec1_desc: "Plataforma pública dedicada a la promoción de la igualdad, inclusión e innovación didáctica a través de la Inteligencia Artificial en educación.",
+                sec2_title: "👨‍👩‍👧‍👦 PARA LAS FAMILIAS",
+                sec2_desc: "Consulte sus dudas sobre apoyo socioeducativo, derechos y recursos de inclusión a través de nuestro Agente de IA:",
+                sec2_ph: "Escriba aquí su consulta para la IA...",
+                sec2_btn: "Consultar Agente IA ➔",
+                sec3_title: "👩‍🏫 PARA LOS DOCENTES",
+                sec3_upload_btn: "📤 Cargar Prompt-Maestro",
+                sec3_desc: "Acceda y comparta prompts-maestros para elaborar programaciones didácticas adaptadas e inclusivas:",
+                sec3_search_ph: "Buscar prompts por palabra clave, materia o autor...",
+                sec4_title: "🏛️ PARA LOS AYUNTAMIENTOS",
+                sec4_desc: "Formulario para la elaboración de Planes Educativos Municipales y asesoría socioeducativa:",
+                sec4_lbl_muni: "Nombre del Municipio / Ayuntamiento:",
+                sec4_lbl_contact: "Persona y cargo de contacto:",
+                sec4_lbl_email: "Correo electrónico de contacto:",
+                sec4_lbl_notes: "Necesidades u observaciones:",
+                sec4_btn: "Enviar Solicitud por Correo",
+                sec5_title: "📄 SOBRE EL PROYECTO Y INFORMES",
+                sec5_desc: "Explore la documentación técnica e informes científicos del Observatorio disponibles para descarga:",
+                relatorio_1: "Título 01",
+                relatorio_2: "Título 02",
+                relatorio_3: "Título 03",
+                relatorio_4: "Título 04",
+                relatorio_5: "Título 05",
+                relatorio_6: "Título 06",
+                relatorio_7: "Título 07",
+                modal_title: "Cargar Prompt-Maestro",
+                modal_lbl_title: "Título del Prompt",
+                modal_lbl_author: "Autor / Docente",
+                modal_lbl_cat: "Materia / Nivel",
+                modal_lbl_body: "Contenido del Prompt-Maestro",
+                btn_cancel: "Cancelar",
+                btn_save: "Guardar Prompt",
+                footer_text: "RED OBSERVATORIO DE IGUALDAD EDUCATIVA INCLUSIVA © 2026 — Universitat de València",
+                support_label: "Soporte y contacto:"
+            },
+            ca: {
+                page_title: "XARXA OBSERVATORI D'IGUALTAT EDUCATIVA INCLUSIVA",
+                header_title: "XARXA OBSERVATORI D'IGUALTAT EDUCATIVA INCLUSIVA",
+                img_credit: "Imatge UNESCO / Projecte Observatori",
+                sec1_title: "Xarxa Observatori d'Igualtat Educativa Inclusiva",
+                sec1_desc: "Plataforma pública dedicada a la promoció de la igualtat, inclusió i innovació didàctica mitjançant la Intel·ligència Artificial en educació.",
+                sec2_title: "👨‍👩‍👧‍👦 PER A LES FAMÍLIES",
+                sec2_desc: "Consulteu els vostres dubtes sobre suport socioeducatiu, drets i recursos d'inclusió mitjançant el nostre Agent d'IA:",
+                sec2_ph: "Escriviu ací la vostra consulta per a la IA...",
+                sec2_btn: "Consultar Agent IA ➔",
+                sec3_title: "👩‍🏫 PER ALS DOCENTS",
+                sec3_upload_btn: "📤 Carregar Prompt-Mestre",
+                sec3_desc: "Accediu i compartiu prompts-mestres per a elaborar programacions didàctiques adaptades i inclusives:",
+                sec3_search_ph: "Cercar prompts per paraula clau, matèria o autor...",
+                sec4_title: "🏛️ PER ALS AJUNTAMENTS",
+                sec4_desc: "Formulari per a l'elaboració de Plans Educatius Municipals i assessorament socioeducatiu:",
+                sec4_lbl_muni: "Nom del Municipi / Ajuntament:",
+                sec4_lbl_contact: "Persona i càrrec de contacte:",
+                sec4_lbl_email: "Correu electrònic de contacte:",
+                sec4_lbl_notes: "Necessitats o observacions:",
+                sec4_btn: "Enviar Sol·licitud per Correu",
+                sec5_title: "📄 SOBRE EL PROJECTE I INFORMES",
+                sec5_desc: "Exploreu la documentació tècnica i informes científics de l'Observatori disponibles per a descarrega:",
+                relatorio_1: "Título 01",
+                relatorio_2: "Título 02",
+                relatorio_3: "Título 03",
+                relatorio_4: "Título 04",
+                relatorio_5: "Título 05",
+                relatorio_6: "Título 06",
+                relatorio_7: "Título 07",
+                modal_title: "Carregar Prompt-Mestre",
+                modal_lbl_title: "Títol del Prompt",
+                modal_lbl_author: "Autor / Docent",
+                modal_lbl_cat: "Matèria / Nivell",
+                modal_lbl_body: "Contingut del Prompt-Mestre",
+                btn_cancel: "Cancel·lar",
+                btn_save: "Guardar Prompt",
+                footer_text: "XARXA OBSERVATORI D'IGUALTAT EDUCATIVA INCLUSIVA © 2026 — Universitat de València",
+                support_label: "Suport i contacte:"
+            },
+            en: {
+                page_title: "INCLUSIVE EDUCATIONAL EQUALITY OBSERVATORY NETWORK",
+                header_title: "INCLUSIVE EDUCATIONAL EQUALITY OBSERVATORY NETWORK",
+                img_credit: "Image UNESCO / Project Observatory",
+                sec1_title: "Inclusive Educational Equality Observatory Network",
+                sec1_desc: "Public platform dedicated to promoting equality, inclusion, and educational innovation through Artificial Intelligence in education.",
+                sec2_title: "👨‍👩‍👧‍👦 FOR FAMILIES",
+                sec2_desc: "Ask your questions about socio-educational support, rights, and inclusion resources through our AI Agent:",
+                sec2_ph: "Type your query for the AI here...",
+                sec2_btn: "Consult AI Agent ➔",
+                sec3_title: "👩‍🏫 FOR TEACHERS",
+                sec3_upload_btn: "📤 Upload Master-Prompt",
+                sec3_desc: "Access and share master-prompts to build adapted and inclusive lesson plans:",
+                sec3_search_ph: "Search prompts by keyword, subject, or author...",
+                sec4_title: "🏛️ FOR MUNICIPALITIES",
+                sec4_desc: "Form for the development of Municipal Educational Plans and socio-educational guidance:",
+                sec4_lbl_muni: "Municipality / City Council Name:",
+                sec4_lbl_contact: "Contact person and role:",
+                sec4_lbl_email: "Contact Email:",
+                sec4_lbl_notes: "Needs or observations:",
+                sec4_btn: "Send Request via Email",
+                sec5_title: "📄 ABOUT THE PROJECT AND REPORTS",
+                sec5_desc: "Explore technical documentation and scientific reports from the Observatory available for download:",
+                relatorio_1: "Título 01",
+                relatorio_2: "Título 02",
+                relatorio_3: "Título 03",
+                relatorio_4: "Título 04",
+                relatorio_5: "Título 05",
+                relatorio_6: "Título 06",
+                relatorio_7: "Título 07",
+                modal_title: "Upload Master-Prompt",
+                modal_lbl_title: "Prompt Title",
+                modal_lbl_author: "Author / Teacher",
+                modal_lbl_cat: "Subject / Level",
+                modal_lbl_body: "Master-Prompt Content",
+                btn_cancel: "Cancel",
+                btn_save: "Save Prompt",
+                footer_text: "INCLUSIVE EDUCATIONAL EQUALITY OBSERVATORY NETWORK © 2026 — Universitat de València",
+                support_label: "Support and contact:"
+            }
+        };
+
+        // CAMBIO DE IDIOMA
+        function setLanguage(lang) {
+            const selectedLang = translations[lang] ? lang : 'pt';
+            document.documentElement.lang = selectedLang === 'pt' ? 'pt-br' : selectedLang;
+
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`btn-${selectedLang}`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[selectedLang] && translations[selectedLang][key]) {
+                    el.textContent = translations[selectedLang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ph');
+                if (translations[selectedLang] && translations[selectedLang][key]) {
+                    el.placeholder = translations[selectedLang][key];
+                }
+            });
+        }
+
+        // FUNCIONALIDAD PARA FAMILIAS (ENLACE AGENTE IA)
+        function queryFamilyAI() {
+            const query = document.getElementById('family-query').value.trim();
+            if(!query) {
+                alert("Por favor, digite uma consulta antes de continuar.");
+                return;
+            }
+            alert("Sua consulta será redirecionada para o Agente de IA socioeducativo.");
+        }
+
+        // ENVIAR FORMULARIO MUNICIPIOS
+        function sendMuniForm(e) {
+            e.preventDefault();
+            const muni = document.getElementById('muni-name').value;
+            const contact = document.getElementById('muni-contact').value;
+            const email = document.getElementById('muni-email').value;
+            const notes = document.getElementById('muni-notes').value;
+
+            const subject = encodeURIComponent(`Solicitação Plano Educativo Municipal - ${muni}`);
+            const body = encodeURIComponent(`Município: ${muni}\nContato: ${contact}\nE-mail: ${email}\n\nObservações:\n${notes}`);
+
+            window.location.href = `mailto:francesc.j.hernandez@uv.es?subject=${subject}&body=${body}`;
+        }
+
+        // LÓGICA DE PROMPTS Y SUPABASE
+        async function fetchPrompts() {
+            if (supabaseClient) {
+                try {
+                    const { data, error } = await supabaseClient
+                        .from('prompts')
+                        .select('*')
+                        .order('created_at', { ascending: false });
+
+                    if (!error && data) {
+                        allPrompts = data;
+                        renderPrompts(allPrompts);
+                        return;
+                    }
+                } catch (err) {
+                    console.error('Error al conectar con Supabase:', err);
+                }
+            }
+            // Datos por defecto si aún no está conectada la base de datos
+            allPrompts = [
+                { title: "Prompt-Mestre para Adaptação Curricular Inclusiva", body: "Você é um especialista em educação inclusiva..." },
+                { title: "Prompt para Elaboração de Plano Educativo Municipal", body: "Elabore uma proposta de plano educacional..." }
+            ];
+            renderPrompts(allPrompts);
+        }
+
+        function renderPrompts(prompts) {
+            const container = document.getElementById('prompts-container');
+            container.innerHTML = '';
+
+            if (prompts.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:#64748b;">Nenhum prompt encontrado.</p>';
+                return;
+            }
+
+            prompts.forEach(p => {
+                const row = document.createElement('div');
+                row.className = 'prompt-row';
+
+                const title = document.createElement('div');
+                title.className = 'prompt-title';
+                title.textContent = p.title || 'Prompt sem título';
+
+                const btnCopy = document.createElement('button');
+                btnCopy.className = 'btn-copy';
+                btnCopy.textContent = 'Copiar';
+                btnCopy.onclick = () => {
+                    navigator.clipboard.writeText(p.body || '');
+                    btnCopy.textContent = 'Copiado!';
+                    setTimeout(() => btnCopy.textContent = 'Copiar', 2000);
+                };
+
+                row.appendChild(title);
+                row.appendChild(btnCopy);
+                container.appendChild(row);
+            });
+        }
+
+        // GESTIÓN DEL MODAL DE SUBIDA DE PROMPTS
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage('pt');
+            fetchPrompts();
+
+            const modal = document.getElementById('upload-modal');
+            document.getElementById('btn-open-modal').onclick = () => modal.style.display = 'flex';
+            document.getElementById('btn-close-modal').onclick = () => modal.style.display = 'none';
+
+            document.getElementById('search-prompts').addEventListener('input', (e) => {
+                const q = e.target.value.toLowerCase();
+                const filtered = allPrompts.filter(p => 
+                    (p.title && p.title.toLowerCase().includes(q)) || 
+                    (p.body && p.body.toLowerCase().includes(q))
+                );
+                renderPrompts(filtered);
+            });
+
+            document.getElementById('add-prompt-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const title = document.getElementById('new-prompt-title').value;
+                const author = document.getElementById('new-prompt-author').value;
+                const category = document.getElementById('new-prompt-category').value;
+                const body = document.getElementById('new-prompt-body').value;
+
+                if (supabaseClient) {
+                    const { error } = await supabaseClient.from('prompts').insert([{ title, author, category, body }]);
+                    if (error) {
+                        alert("Erro ao salvar no Supabase: " + error.message);
+                        return;
+                    }
+                }
+                alert("Prompt salvo com sucesso!");
+                modal.style.display = 'none';
+                document.getElementById('add-prompt-form').reset();
+                fetchPrompts();
+            });
+        });
+    </script>
+</body>
+</html>
