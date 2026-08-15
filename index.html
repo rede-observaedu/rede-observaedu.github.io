@@ -72,7 +72,7 @@
             letter-spacing: -0.01em;
         }
 
-        /* Selector de Idioma */
+        /* Selector de Idioma (5 idiomas) */
         .lang-selector {
             display: flex;
             gap: 0.25rem;
@@ -378,11 +378,13 @@
                 <h1 data-i18n="header_title">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA</h1>
             </div>
             
+            <!-- Selector de 5 idiomas ordenados según criterio acordado -->
             <div class="lang-selector">
-                <button onclick="setLanguage('pt')" id="btn-pt" class="lang-btn active">Português (BR)</button>
+                <button onclick="setLanguage('pt')" id="btn-pt" class="lang-btn active">Português</button>
                 <button onclick="setLanguage('es')" id="btn-es" class="lang-btn">Castellano</button>
-                <button onclick="setLanguage('ca')" id="btn-ca" class="lang-btn">Català / Valencià</button>
                 <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">English</button>
+                <button onclick="setLanguage('fr')" id="btn-fr" class="lang-btn">Français</button>
+                <button onclick="setLanguage('ca')" id="btn-ca" class="lang-btn">Català / Valencià</button>
             </div>
         </div>
     </header>
@@ -392,7 +394,7 @@
         <!-- SECCIÓN 1: PRESENTACIÓN Y FOTO -->
         <section class="card">
             <div class="image-wrapper">
-                <img src="https://www.uv.es/senex/imatgeLlenguaAI.png" alt="Observatório de Igualdade Educativa">
+                <img src="https://www.uv.es/mia1/luciana/image.jpg" alt="Observatório de Igualdade Educativa">
                 <span class="image-caption" data-i18n="img_credit">Imagem UNESCO / Projecte Observatório</span>
             </div>
             <h2 class="card-title" data-i18n="sec1_title">Rede Observatório de Igualdade Educativa Inclusiva</h2>
@@ -464,49 +466,49 @@
             <div class="relatorios-grid">
                 <a href="http://www.uv.es/fjhernan/relatorios/relatorio01.pdf" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_1">Título 01</h4>
+                        <h4 data-i18n="relatorio_1">Relatório 01</h4>
                         <p>relatorio01.pdf</p>
                     </div>
                     <span>📥</span>
                 </a>
                 <a href="http://www.uv.es/fjhernan/relatorios/relatorio02.pdf" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_2">Título 02</h4>
+                        <h4 data-i18n="relatorio_2">Relatório 02</h4>
                         <p>relatorio02.pdf</p>
                     </div>
                     <span>📥</span>
                 </a>
                 <a href="http://www.uv.es/fjhernan/relatorios/relatorio03.pdf" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_3">Título 03</h4>
+                        <h4 data-i18n="relatorio_3">Relatório 03</h4>
                         <p>relatorio03.pdf</p>
                     </div>
                     <span>📥</span>
                 </a>
                 <a href="http://www.uv.es/fjhernan/relatorios/relatorio04.pdf" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_4">Título 04</h4>
+                        <h4 data-i18n="relatorio_4">Relatório 04</h4>
                         <p>relatorio04.pdf</p>
                     </div>
                     <span>📥</span>
                 </a>
                 <a href="http://www.uv.es/fjhernan/relatorios/relatorio05.pdf" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_5">Título 05</h4>
+                        <h4 data-i18n="relatorio_5">Relatório 05</h4>
                         <p>relatorio05.pdf</p>
                     </div>
                     <span>📥</span>
                 </a>
                 <a href="http://www.uv.es/fjhernan/relatorios/relatorio06.pdf" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_6">Título 06</h4>
+                        <h4 data-i18n="relatorio_6">Relatório 06</h4>
                         <p>relatorio06.pdf</p>
                     </div>
                     <span>📥</span>
                 </a>
                 <a href="http://www.uv.es/fjhernan/relatorios/relatorio07.pdf" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_7">Título 07</h4>
+                        <h4 data-i18n="relatorio_7">Relatório 07</h4>
                         <p>relatorio07.pdf</p>
                     </div>
                     <span>📥</span>
@@ -545,22 +547,22 @@
         </div>
     </div>
 
-    <!-- PIE DE PÁGINA -->
+    <!-- PIE DE PÁGINA (Sin mención a UV según especificación) -->
     <footer>
-        <p data-i18n="footer_text">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA © 2026 — Universitat de València</p>
+        <p data-i18n="footer_text">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA © 2026</p>
         <p><span data-i18n="support_label">Suporte e contato:</span> <a href="mailto:francesc.j.hernandez@uv.es">francesc.j.hernandez@uv.es</a></p>
     </footer>
 
     <!-- SCRIPT DE TRADUCCIÓN E INTERACTIVIDAD -->
     <script>
-        // --- CONFIGURACIÓN DE SUPABASE (Colocar tus credenciales reales aquí) ---
+        // --- CONFIGURACIÓN DE SUPABASE ---
         const SUPABASE_URL = "https://paxrolsjynqivoeltoyk.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBheHJvbHNqeW5xaXZvZWx0b3lrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU2ODA4MTUsImV4cCI6MjEwMTI1NjgxNX0.8sYrtc7D5-_2keQPf2Ra-0Ff_lNC3PJkH0P6H9gqbXA";
         const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
         let allPrompts = [];
 
-        // TRADUCCIONES (Português de Brasil por defecto)
+        // TRADUCCIONES EN 5 IDIOMAS
         const translations = {
             pt: {
                 page_title: "REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA",
@@ -585,13 +587,13 @@
                 sec4_btn: "Enviar Solicitação por E-mail",
                 sec5_title: "📄 SOBRE O PROJETO E RELATÓRIOS",
                 sec5_desc: "Explore a documentação técnica e relatórios científicos do Observatório disponíveis para download:",
-                relatorio_1: "Título 01",
-                relatorio_2: "Título 02",
-                relatorio_3: "Título 03",
-                relatorio_4: "Título 04",
-                relatorio_5: "Título 05",
-                relatorio_6: "Título 06",
-                relatorio_7: "Título 07",
+                relatorio_1: "Relatório 01",
+                relatorio_2: "Relatório 02",
+                relatorio_3: "Relatório 03",
+                relatorio_4: "Relatório 04",
+                relatorio_5: "Relatório 05",
+                relatorio_6: "Relatório 06",
+                relatorio_7: "Relatório 07",
                 modal_title: "Carregar Prompt-Mestre",
                 modal_lbl_title: "Título do Prompt",
                 modal_lbl_author: "Autor / Docente",
@@ -599,13 +601,13 @@
                 modal_lbl_body: "Conteúdo do Prompt-Mestre",
                 btn_cancel: "Cancelar",
                 btn_save: "Salvar Prompt",
-                footer_text: "REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA © 2026 — Universitat de València",
+                footer_text: "REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA © 2026",
                 support_label: "Suporte e contato:"
             },
             es: {
                 page_title: "RED OBSERVATORIO DE IGUALDAD EDUCATIVA INCLUSIVA",
                 header_title: "RED OBSERVATORIO DE IGUALDAD EDUCATIVA INCLUSIVA",
-                img_credit: "Imagen UNESCO / Projecte Observatorio",
+                img_credit: "Imagen UNESCO / Proyecto Observatorio",
                 sec1_title: "Red Observatorio de Igualdad Educativa Inclusiva",
                 sec1_desc: "Plataforma pública dedicada a la promoción de la igualdad, inclusión e innovación didáctica a través de la Inteligencia Artificial en educación.",
                 sec2_title: "👨‍👩‍👧‍👦 PARA LAS FAMILIAS",
@@ -623,15 +625,15 @@
                 sec4_lbl_email: "Correo electrónico de contacto:",
                 sec4_lbl_notes: "Necesidades u observaciones:",
                 sec4_btn: "Enviar Solicitud por Correo",
-                sec5_title: "📄 SOBRE EL PROYECTO Y INFORMES",
+                sec5_title: "📄 SOBRE EL PROYECTO E INFORMES",
                 sec5_desc: "Explore la documentación técnica e informes científicos del Observatorio disponibles para descarga:",
-                relatorio_1: "Título 01",
-                relatorio_2: "Título 02",
-                relatorio_3: "Título 03",
-                relatorio_4: "Título 04",
-                relatorio_5: "Título 05",
-                relatorio_6: "Título 06",
-                relatorio_7: "Título 07",
+                relatorio_1: "Informe 01",
+                relatorio_2: "Informe 02",
+                relatorio_3: "Informe 03",
+                relatorio_4: "Informe 04",
+                relatorio_5: "Informe 05",
+                relatorio_6: "Informe 06",
+                relatorio_7: "Informe 07",
                 modal_title: "Cargar Prompt-Maestro",
                 modal_lbl_title: "Título del Prompt",
                 modal_lbl_author: "Autor / Docente",
@@ -639,48 +641,8 @@
                 modal_lbl_body: "Contenido del Prompt-Maestro",
                 btn_cancel: "Cancelar",
                 btn_save: "Guardar Prompt",
-                footer_text: "RED OBSERVATORIO DE IGUALDAD EDUCATIVA INCLUSIVA © 2026 — Universitat de València",
+                footer_text: "RED OBSERVATORIO DE IGUALDAD EDUCATIVA INCLUSIVA © 2026",
                 support_label: "Soporte y contacto:"
-            },
-            ca: {
-                page_title: "XARXA OBSERVATORI D'IGUALTAT EDUCATIVA INCLUSIVA",
-                header_title: "XARXA OBSERVATORI D'IGUALTAT EDUCATIVA INCLUSIVA",
-                img_credit: "Imatge UNESCO / Projecte Observatori",
-                sec1_title: "Xarxa Observatori d'Igualtat Educativa Inclusiva",
-                sec1_desc: "Plataforma pública dedicada a la promoció de la igualtat, inclusió i innovació didàctica mitjançant la Intel·ligència Artificial en educació.",
-                sec2_title: "👨‍👩‍👧‍👦 PER A LES FAMÍLIES",
-                sec2_desc: "Consulteu els vostres dubtes sobre suport socioeducatiu, drets i recursos d'inclusió mitjançant el nostre Agent d'IA:",
-                sec2_ph: "Escriviu ací la vostra consulta per a la IA...",
-                sec2_btn: "Consultar Agent IA ➔",
-                sec3_title: "👩‍🏫 PER ALS DOCENTS",
-                sec3_upload_btn: "📤 Carregar Prompt-Mestre",
-                sec3_desc: "Accediu i compartiu prompts-mestres per a elaborar programacions didàctiques adaptades i inclusives:",
-                sec3_search_ph: "Cercar prompts per paraula clau, matèria o autor...",
-                sec4_title: "🏛️ PER ALS AJUNTAMENTS",
-                sec4_desc: "Formulari per a l'elaboració de Plans Educatius Municipals i assessorament socioeducatiu:",
-                sec4_lbl_muni: "Nom del Municipi / Ajuntament:",
-                sec4_lbl_contact: "Persona i càrrec de contacte:",
-                sec4_lbl_email: "Correu electrònic de contacte:",
-                sec4_lbl_notes: "Necessitats o observacions:",
-                sec4_btn: "Enviar Sol·licitud per Correu",
-                sec5_title: "📄 SOBRE EL PROJECTE I INFORMES",
-                sec5_desc: "Exploreu la documentació tècnica i informes científics de l'Observatori disponibles per a descarrega:",
-                relatorio_1: "Título 01",
-                relatorio_2: "Título 02",
-                relatorio_3: "Título 03",
-                relatorio_4: "Título 04",
-                relatorio_5: "Título 05",
-                relatorio_6: "Título 06",
-                relatorio_7: "Título 07",
-                modal_title: "Carregar Prompt-Mestre",
-                modal_lbl_title: "Títol del Prompt",
-                modal_lbl_author: "Autor / Docent",
-                modal_lbl_cat: "Matèria / Nivell",
-                modal_lbl_body: "Contingut del Prompt-Mestre",
-                btn_cancel: "Cancel·lar",
-                btn_save: "Guardar Prompt",
-                footer_text: "XARXA OBSERVATORI D'IGUALTAT EDUCATIVA INCLUSIVA © 2026 — Universitat de València",
-                support_label: "Suport i contacte:"
             },
             en: {
                 page_title: "INCLUSIVE EDUCATIONAL EQUALITY OBSERVATORY NETWORK",
@@ -705,13 +667,13 @@
                 sec4_btn: "Send Request via Email",
                 sec5_title: "📄 ABOUT THE PROJECT AND REPORTS",
                 sec5_desc: "Explore technical documentation and scientific reports from the Observatory available for download:",
-                relatorio_1: "Título 01",
-                relatorio_2: "Título 02",
-                relatorio_3: "Título 03",
-                relatorio_4: "Título 04",
-                relatorio_5: "Título 05",
-                relatorio_6: "Título 06",
-                relatorio_7: "Título 07",
+                relatorio_1: "Report 01",
+                relatorio_2: "Report 02",
+                relatorio_3: "Report 03",
+                relatorio_4: "Report 04",
+                relatorio_5: "Report 05",
+                relatorio_6: "Report 06",
+                relatorio_7: "Report 07",
                 modal_title: "Upload Master-Prompt",
                 modal_lbl_title: "Prompt Title",
                 modal_lbl_author: "Author / Teacher",
@@ -719,8 +681,88 @@
                 modal_lbl_body: "Master-Prompt Content",
                 btn_cancel: "Cancel",
                 btn_save: "Save Prompt",
-                footer_text: "INCLUSIVE EDUCATIONAL EQUALITY OBSERVATORY NETWORK © 2026 — Universitat de València",
+                footer_text: "INCLUSIVE EDUCATIONAL EQUALITY OBSERVATORY NETWORK © 2026",
                 support_label: "Support and contact:"
+            },
+            fr: {
+                page_title: "RÉSEAU OBSERVATOIRE D'ÉGALITÉ ÉDUCATIVE INCLUSIVE",
+                header_title: "RÉSEAU OBSERVATOIRE D'ÉGALITÉ ÉDUCATIVE INCLUSIVE",
+                img_credit: "Image UNESCO / Projet Observatoire",
+                sec1_title: "Réseau Observatoire d'Égalité Éducative Inclusive",
+                sec1_desc: "Plateforme publique dédiée à la promotion de l'égalité, de l'inclusion et de l'innovation pédagogique grâce à l'Intelligence Artificielle dans l'éducation.",
+                sec2_title: "👨‍👩‍👧‍👦 POUR LES FAMILLES",
+                sec2_desc: "Posez vos questions sur le soutien socio-éducatif, les droits et les ressources d'inclusion via notre Agent IA :",
+                sec2_ph: "Écrivez ici votre question pour l'IA...",
+                sec2_btn: "Consulter l'Agent IA ➔",
+                sec3_title: "👩‍🏫 POUR LES ENSEIGNANTS",
+                sec3_upload_btn: "📤 Publier un Prompt-Maître",
+                sec3_desc: "Accédez et partagez des prompts-maîtres pour élaborer des programmes pédagogiques adaptés et inclusifs :",
+                sec3_search_ph: "Rechercher des prompts par mot-clé, matière ou auteur...",
+                sec4_title: "🏛️ POUR LES MUNICIPALITÉS",
+                sec4_desc: "Formulaire pour l'élaboration de Plans Éducatifs Municipaux et conseils socio-éducatifs :",
+                sec4_lbl_muni: "Nom de la Municipalité / Mairie :",
+                sec4_lbl_contact: "Personne et fonction de contact :",
+                sec4_lbl_email: "E-mail de contact :",
+                sec4_lbl_notes: "Besoins ou observations :",
+                sec4_btn: "Envoyer la Demande par E-mail",
+                sec5_title: "📄 À PROPOS DU PROJET ET RAPPORTS",
+                sec5_desc: "Explorez la documentation technique et les rapports scientifiques de l'Observatoire disponibles au téléchargement :",
+                relatorio_1: "Rapport 01",
+                relatorio_2: "Rapport 02",
+                relatorio_3: "Rapport 03",
+                relatorio_4: "Rapport 04",
+                relatorio_5: "Rapport 05",
+                relatorio_6: "Rapport 06",
+                relatorio_7: "Rapport 07",
+                modal_title: "Publier un Prompt-Maître",
+                modal_lbl_title: "Titre du Prompt",
+                modal_lbl_author: "Auteur / Enseignant",
+                modal_lbl_cat: "Matière / Niveau",
+                modal_lbl_body: "Contenu du Prompt-Maître",
+                btn_cancel: "Annuler",
+                btn_save: "Enregistrer le Prompt",
+                footer_text: "RÉSEAU OBSERVATOIRE D'ÉGALITÉ ÉDUCATIVE INCLUSIVE © 2026",
+                support_label: "Support et contact :"
+            },
+            ca: {
+                page_title: "XARXA OBSERVATORI D'IGUALTAT EDUCATIVA INCLUSIVA",
+                header_title: "XARXA OBSERVATORI D meIGUALTAT EDUCATIVA INCLUSIVA",
+                img_credit: "Imatge UNESCO / Projecte Observatori",
+                sec1_title: "Xarxa Observatori d'Igualtat Educativa Inclusiva",
+                sec1_desc: "Plataforma pública dedicada a la promoció de la igualtat, inclusió i innovació didàctica mitjançant la Intel·ligència Artificial en educació.",
+                sec2_title: "👨‍👩‍👧‍👦 PER A LES FAMÍLIES",
+                sec2_desc: "Consulteu els vostres dubtes sobre suport socioeducatiu, drets i recursos d'inclusió mitjançant el nostre Agent d'IA:",
+                sec2_ph: "Escriviu ací la vostra consulta per a la IA...",
+                sec2_btn: "Consultar Agent IA ➔",
+                sec3_title: "👩‍🏫 PER ALS DOCENTS",
+                sec3_upload_btn: "📤 Carregar Prompt-Mestre",
+                sec3_desc: "Accediu i compartiu prompts-mestres per a elaborar programacions didàctiques adaptades i inclusives en aquest portal:",
+                sec3_search_ph: "Cercar prompts per paraula clau, matèria o autor...",
+                sec4_title: "🏛️ PER ALS AJUNTAMENTS",
+                sec4_desc: "Formulari per a l'elaboració de Plans Educatius Municipals i assessorament socioeducatiu:",
+                sec4_lbl_muni: "Nom del Municipi / Ajuntament:",
+                sec4_lbl_contact: "Persona i càrrec de contacte:",
+                sec4_lbl_email: "Correu electrònic de contacte:",
+                sec4_lbl_notes: "Necessitats o observacions:",
+                sec4_btn: "Enviar Sol·licitud per Correu",
+                sec5_title: "📄 SOBRE EL PROJECTE I INFORMES",
+                sec5_desc: "Exploreu la documentació tècnica i informes científics de l'Observatori disponibles per a descarrega en aquest apartat:",
+                relatorio_1: "Informe 01",
+                relatorio_2: "Informe 02",
+                relatorio_3: "Informe 03",
+                relatorio_4: "Informe 04",
+                relatorio_5: "Informe 05",
+                relatorio_6: "Informe 06",
+                relatorio_7: "Informe 07",
+                modal_title: "Carregar Prompt-Mestre",
+                modal_lbl_title: "Títol del Prompt",
+                modal_lbl_author: "Autor / Docent",
+                modal_lbl_cat: "Matèria / Nivell",
+                modal_lbl_body: "Contingut del Prompt-Mestre",
+                btn_cancel: "Cancel·lar",
+                btn_save: "Guardar Prompt",
+                footer_text: "XARXA OBSERVATORI D'IGUALTAT EDUCATIVA INCLUSIVA © 2026",
+                support_label: "Suport i contacte:"
             }
         };
 
@@ -790,10 +832,9 @@
                     console.error('Error al conectar con Supabase:', err);
                 }
             }
-            // Datos por defecto si aún no está conectada la base de datos
+            // Datos por defecto genéricos
             allPrompts = [
-                { title: "Prompt-Mestre para Adaptação Curricular Inclusiva", body: "Você é um especialista em educação inclusiva..." },
-                { title: "Prompt para Elaboração de Plano Educativo Municipal", body: "Elabore uma proposta de plano educacional..." }
+                { title: "Prompt-Mestre para Adaptação Curricular Inclusiva", body: "Você é um especialista em educação inclusiva..." }
             ];
             renderPrompts(allPrompts);
         }
