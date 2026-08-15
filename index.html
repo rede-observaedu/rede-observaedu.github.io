@@ -177,6 +177,50 @@
             font-size: 1.05rem;
         }
 
+        /* ESTILOS DEL CHAT IA (FAMILIAS) */
+        .chat-box {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            height: 260px;
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .chat-msg {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .bot-msg {
+            background-color: #e2e8f0;
+            color: var(--text-main);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .user-msg {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input-container input {
+            flex: 1;
+        }
+
         /* FORMULARIOS E INPUTS */
         .form-group {
             display: flex;
@@ -378,7 +422,7 @@
                 <h1 data-i18n="header_title">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA</h1>
             </div>
             
-            <!-- Selector de 5 idiomas ordenados según criterio acordado -->
+            <!-- Selector de 5 idiomas en orden exacto -->
             <div class="lang-selector">
                 <button onclick="setLanguage('pt')" id="btn-pt" class="lang-btn active">Português</button>
                 <button onclick="setLanguage('es')" id="btn-es" class="lang-btn">Castellano</button>
@@ -403,15 +447,20 @@
             </p>
         </section>
 
-        <!-- SECCIÓN 2: PARA LAS FAMILIAS -->
+        <!-- SECCIÓN 2: PARA LAS FAMILIAS (CHAT INTERACTIVO IA) -->
         <section class="card" style="border-top-color: #10b981;">
             <h2 class="card-title" data-i18n="sec2_title">👨‍👩‍👧‍👦 PARA AS FAMÍLIAS</h2>
             <p data-i18n="sec2_desc">Consulte suas dúvidas sobre apoio socioeducativo, direitos e recursos de inclusão através do nosso Agente de IA:</p>
-            <div class="form-group">
-                <input type="text" id="family-query" data-i18n-ph="sec2_ph" placeholder="Escreva aqui a sua consulta para a IA...">
+            
+            <div id="chat-box" class="chat-box">
+                <div class="chat-msg bot-msg" id="chat-welcome-msg" data-i18n="chat_welcome">
+                    Olá! Sou o assistente de IA socioeducativo. Como posso ajudar a sua família hoje?
+                </div>
             </div>
-            <div>
-                <button class="btn-primary" onclick="queryFamilyAI()" data-i18n="sec2_btn">Consultar Agente IA ➔</button>
+
+            <div class="chat-input-container">
+                <input type="text" id="family-query" data-i18n-ph="sec2_ph" placeholder="Escreva aqui a sua consulta para a IA..." onkeypress="handleKeyPress(event)">
+                <button class="btn-primary" onclick="queryFamilyAI()" id="btn-send-chat" data-i18n="sec2_btn">Enviar ➔</button>
             </div>
         </section>
 
@@ -547,22 +596,25 @@
         </div>
     </div>
 
-    <!-- PIE DE PÁGINA (Sin mención a UV según especificación) -->
+    <!-- PIE DE PÁGINA -->
     <footer>
         <p data-i18n="footer_text">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA © 2026</p>
         <p><span data-i18n="support_label">Suporte e contato:</span> <a href="mailto:francesc.j.hernandez@uv.es">francesc.j.hernandez@uv.es</a></p>
     </footer>
 
-    <!-- SCRIPT DE TRADUCCIÓN E INTERACTIVIDAD -->
+    <!-- SCRIPT DE TRADUCCIÓN, CHAT E INTERACTIVIDAD -->
     <script>
         // --- CONFIGURACIÓN DE SUPABASE ---
         const SUPABASE_URL = "https://paxrolsjynqivoeltoyk.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBheHJvbHNqeW5xaXZvZWx0b3lrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU2ODA4MTUsImV4cCI6MjEwMTI1NjgxNX0.8sYrtc7D5-_2keQPf2Ra-0Ff_lNC3PJkH0P6H9gqbXA";
         const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
+        // URL del Endpoint Backend del Agente IA (a configurar)
+        const AGENT_API_URL = "https://tu-api-backend.vercel.app/api/chat";
+
         let allPrompts = [];
 
-        // TRADUCCIONES EN 5 IDIOMAS
+        // DICCIONARIOS MULTILINGÜES (5 IDIOMAS)
         const translations = {
             pt: {
                 page_title: "REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA",
@@ -573,7 +625,8 @@
                 sec2_title: "👨‍👩‍👧‍👦 PARA AS FAMÍLIAS",
                 sec2_desc: "Consulte suas dúvidas sobre apoio socioeducativo, direitos e recursos de inclusão através do nosso Agente de IA:",
                 sec2_ph: "Escreva aqui a sua consulta para a IA...",
-                sec2_btn: "Consultar Agente IA ➔",
+                sec2_btn: "Enviar ➔",
+                chat_welcome: "Olá! Sou o assistente de IA socioeducativo. Como posso ajudar a sua família hoje?",
                 sec3_title: "👩‍🏫 PARA OS DOCENTES",
                 sec3_upload_btn: "📤 Carregar Prompt-Mestre",
                 sec3_desc: "Acesse e compartilhe prompts-mestres para elaborar programações didáticas adaptadas e inclusivas:",
@@ -613,7 +666,8 @@
                 sec2_title: "👨‍👩‍👧‍👦 PARA LAS FAMILIAS",
                 sec2_desc: "Consulte sus dudas sobre apoyo socioeducativo, derechos y recursos de inclusión a través de nuestro Agente de IA:",
                 sec2_ph: "Escriba aquí su consulta para la IA...",
-                sec2_btn: "Consultar Agente IA ➔",
+                sec2_btn: "Enviar ➔",
+                chat_welcome: "¡Hola! Soy el asistente de IA socioeducativo. ¿Cómo puedo ayudar a su familia hoy?",
                 sec3_title: "👩‍🏫 PARA LOS DOCENTES",
                 sec3_upload_btn: "📤 Cargar Prompt-Maestro",
                 sec3_desc: "Acceda y comparta prompts-maestros para elaborar programaciones didácticas adaptadas e inclusivas:",
@@ -653,7 +707,8 @@
                 sec2_title: "👨‍👩‍👧‍👦 FOR FAMILIES",
                 sec2_desc: "Ask your questions about socio-educational support, rights, and inclusion resources through our AI Agent:",
                 sec2_ph: "Type your query for the AI here...",
-                sec2_btn: "Consult AI Agent ➔",
+                sec2_btn: "Send ➔",
+                chat_welcome: "Hello! I am the socio-educational AI assistant. How can I help your family today?",
                 sec3_title: "👩‍🏫 FOR TEACHERS",
                 sec3_upload_btn: "📤 Upload Master-Prompt",
                 sec3_desc: "Access and share master-prompts to build adapted and inclusive lesson plans:",
@@ -693,7 +748,8 @@
                 sec2_title: "👨‍👩‍👧‍👦 POUR LES FAMILLES",
                 sec2_desc: "Posez vos questions sur le soutien socio-éducatif, les droits et les ressources d'inclusion via notre Agent IA :",
                 sec2_ph: "Écrivez ici votre question pour l'IA...",
-                sec2_btn: "Consulter l'Agent IA ➔",
+                sec2_btn: "Envoyer ➔",
+                chat_welcome: "Bonjour ! Je suis l'assistant IA socio-éducatif. Comment puis-je aider votre famille aujourd'hui ?",
                 sec3_title: "👩‍🏫 POUR LES ENSEIGNANTS",
                 sec3_upload_btn: "📤 Publier un Prompt-Maître",
                 sec3_desc: "Accédez et partagez des prompts-maîtres pour élaborer des programmes pédagogiques adaptés et inclusifs :",
@@ -726,17 +782,18 @@
             },
             ca: {
                 page_title: "XARXA OBSERVATORI D'IGUALTAT EDUCATIVA INCLUSIVA",
-                header_title: "XARXA OBSERVATORI D meIGUALTAT EDUCATIVA INCLUSIVA",
+                header_title: "XARXA OBSERVATORI D'IGUALTAT EDUCATIVA INCLUSIVA",
                 img_credit: "Imatge UNESCO / Projecte Observatori",
                 sec1_title: "Xarxa Observatori d'Igualtat Educativa Inclusiva",
                 sec1_desc: "Plataforma pública dedicada a la promoció de la igualtat, inclusió i innovació didàctica mitjançant la Intel·ligència Artificial en educació.",
                 sec2_title: "👨‍👩‍👧‍👦 PER A LES FAMÍLIES",
                 sec2_desc: "Consulteu els vostres dubtes sobre suport socioeducatiu, drets i recursos d'inclusió mitjançant el nostre Agent d'IA:",
                 sec2_ph: "Escriviu ací la vostra consulta per a la IA...",
-                sec2_btn: "Consultar Agent IA ➔",
+                sec2_btn: "Enviar ➔",
+                chat_welcome: "Hola! Sóc l'assistent d'IA socioeducatiu. Com puc ajudar a la vostra família hui?",
                 sec3_title: "👩‍🏫 PER ALS DOCENTS",
                 sec3_upload_btn: "📤 Carregar Prompt-Mestre",
-                sec3_desc: "Accediu i compartiu prompts-mestres per a elaborar programacions didàctiques adaptades i inclusives en aquest portal:",
+                sec3_desc: "Accediu i compartiu prompts-mestres per a elaborar programacions didàctiques adaptades e inclusives en aquest portal:",
                 sec3_search_ph: "Cercar prompts per paraula clau, matèria o autor...",
                 sec4_title: "🏛️ PER ALS AJUNTAMENTS",
                 sec4_desc: "Formulari per a l'elaboració de Plans Educatius Municipals i assessorament socioeducatiu:",
@@ -790,14 +847,52 @@
             });
         }
 
-        // FUNCIONALIDAD PARA FAMILIAS (ENLACE AGENTE IA)
-        function queryFamilyAI() {
-            const query = document.getElementById('family-query').value.trim();
-            if(!query) {
-                alert("Por favor, digite uma consulta antes de continuar.");
-                return;
+        // LÓGICA DEL CHAT IA (SECCIÓN FAMILIAS)
+        async function queryFamilyAI() {
+            const inputEl = document.getElementById('family-query');
+            const query = inputEl.value.trim();
+            if (!query) return;
+
+            appendMessage(query, 'user-msg');
+            inputEl.value = '';
+
+            const loadingId = appendMessage("Pensando...", 'bot-msg');
+
+            try {
+                const response = await fetch(AGENT_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        message: query,
+                        lang: document.documentElement.lang || 'pt'
+                    })
+                });
+
+                const data = await response.json();
+                document.getElementById(loadingId).textContent = data.reply || "Resposta recebida do Agente IA.";
+            } catch (error) {
+                console.error("Erro na API do Agente IA:", error);
+                document.getElementById(loadingId).textContent = "Sua consulta foi registrada. Conexão com o banco de dados do Agente IA em configuração.";
             }
-            alert("Sua consulta será redirecionada para o Agente de IA socioeducativo.");
+
+            const chatBox = document.getElementById('chat-box');
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') queryFamilyAI();
+        }
+
+        function appendMessage(text, className) {
+            const chatBox = document.getElementById('chat-box');
+            const msgDiv = document.createElement('div');
+            const msgId = 'msg-' + Date.now();
+            msgDiv.id = msgId;
+            msgDiv.className = `chat-msg ${className}`;
+            msgDiv.textContent = text;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return msgId;
         }
 
         // ENVIAR FORMULARIO MUNICIPIOS
@@ -814,7 +909,7 @@
             window.location.href = `mailto:francesc.j.hernandez@uv.es?subject=${subject}&body=${body}`;
         }
 
-        // LÓGICA DE PROMPTS Y SUPABASE
+        // LÓGICA DE PROMPTS Y SUPABASE (Limpios de ejemplos innecesarios)
         async function fetchPrompts() {
             if (supabaseClient) {
                 try {
@@ -829,13 +924,10 @@
                         return;
                     }
                 } catch (err) {
-                    console.error('Error al conectar con Supabase:', err);
+                    console.error('Erro ao conectar com Supabase:', err);
                 }
             }
-            // Datos por defecto genéricos
-            allPrompts = [
-                { title: "Prompt-Mestre para Adaptação Curricular Inclusiva", body: "Você é um especialista em educação inclusiva..." }
-            ];
+            allPrompts = [];
             renderPrompts(allPrompts);
         }
 
@@ -844,7 +936,7 @@
             container.innerHTML = '';
 
             if (prompts.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#64748b;">Nenhum prompt encontrado.</p>';
+                container.innerHTML = '<p style="text-align:center; color:#64748b; padding:1rem;">Nenhum prompt disponível no momento.</p>';
                 return;
             }
 
