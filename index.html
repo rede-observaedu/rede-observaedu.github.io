@@ -662,8 +662,8 @@
             ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) 
             : null;
 
-        // URL DE TU CLOUDFLARE WORKER (Sustituye por tu endpoint real desplegado)
-        const AGENT_API_URL = "https://tu-worker.tu-subdomain.workers.dev";
+        // URL DE TU CLOUDFLARE WORKER ACTUALIZADA
+        const AGENT_API_URL = "https://paraiba.francesc-j-hernandez.workers.dev";
 
         let allPrompts = [];
 
@@ -1049,7 +1049,7 @@
             // INSERCIÓN DE PROMPTS EN SUPABASE
             document.getElementById('add-prompt-form').addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const title = document.getElementById('new-prompt-title-val'] || document.getElementById('new-prompt-title').value;
+                const title = document.getElementById('new-prompt-title').value;
                 const author = document.getElementById('new-prompt-author').value;
                 const category = document.getElementById('new-prompt-category').value;
                 const body = document.getElementById('new-prompt-body').value;
