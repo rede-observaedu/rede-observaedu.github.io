@@ -34,7 +34,7 @@
             min-height: 100vh;
         }
 
-        /* --- CABECERA --- */
+        /* CABECERA */
         header {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #ffffff;
@@ -107,7 +107,7 @@
             box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
         }
 
-        /* --- CONTENEDOR PRINCIPAL --- */
+        /* CONTENEDOR PRINCIPAL */
         main {
             max-width: 950px;
             width: 100%;
@@ -145,7 +145,7 @@
             padding-bottom: 0.5rem;
         }
 
-        /* 1. PRESENTACION Y FOTO */
+        /* PRESENTACION Y FOTO */
         .image-wrapper {
             width: 100%;
             display: flex;
@@ -177,7 +177,49 @@
             font-size: 1.05rem;
         }
 
-        /* ESTILOS DEL CHAT IA (FAMILIAS) */
+        /* SUGERENCIAS ANTES DEL CUADRO DE CHAT */
+        .chat-suggestions {
+            background-color: #f1f5f9;
+            border: 1px dashed var(--primary-blue);
+            border-radius: 10px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .suggestions-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--bg-dark);
+        }
+
+        .suggestion-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .chip {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            color: var(--primary-blue);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .chip:hover {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            border-color: var(--primary-blue);
+        }
+
+        /* ESTILOS DEL CHAT IA */
         .chat-box {
             background-color: var(--bg-light);
             border: 1px solid var(--border-color);
@@ -280,7 +322,7 @@
             background-color: #1e293b;
         }
 
-        /* 3. DOCENTES & PROMPTS LIST */
+        /* DOCENTES & PROMPTS LIST */
         .prompts-header {
             display: flex;
             justify-content: space-between;
@@ -328,7 +370,7 @@
             background-color: #15803d;
         }
 
-        /* 5. RELATORIOS */
+        /* RELATORIOS GRID */
         .relatorios-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -365,7 +407,7 @@
             color: var(--text-muted);
         }
 
-        /* MODAL DE SUBIDA DE PROMPTS */
+        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -446,11 +488,21 @@
             </p>
         </section>
 
-        <!-- SECCIÓN 2: PARA LAS FAMILIAS (CHAT INTERACTIVO IA) -->
+        <!-- SECCIÓN 2: PARA LAS FAMILIAS (CHAT INTERACTIVO IA CON SUGERENCIAS) -->
         <section class="card" style="border-top-color: #10b981;">
             <h2 class="card-title" data-i18n="sec2_title">👨‍👩‍👧‍👦 PARA AS FAMÍLIAS</h2>
             <p data-i18n="sec2_desc">Consulte suas dúvidas sobre apoio socioeducativo, direitos e recursos de inclusão através do nosso Agente de IA:</p>
             
+            <!-- Sugerencias solicitadas antes del cuadro de chat -->
+            <div class="chat-suggestions">
+                <p class="suggestions-title" data-i18n="suggestions_title">💡 Sugestões de perguntas frequentes:</p>
+                <div class="suggestion-chips">
+                    <button type="button" class="chip" onclick="useSuggestion('¿Cómo lee mi hijo comparado con el estado?')">¿Cómo lee mi hijo comparado con el estado?</button>
+                    <button type="button" class="chip" onclick="useSuggestion('¿Qué municipios tienen mejor matemáticas del 9º año?')">¿Qué municipios tienen mejor matemáticas del 9º año?</button>
+                    <button type="button" class="chip" onclick="useSuggestion('Diferencia entre escuelas públicas y privadas en João Pessoa')">Diferencia entre escuelas públicas y privadas en João Pessoa</button>
+                </div>
+            </div>
+
             <div id="chat-box" class="chat-box">
                 <div class="chat-msg bot-msg" id="chat-welcome-msg" data-i18n="chat_welcome">
                     Olá! Sou o assistente de IA socioeducativo. Como posso ajudar a sua família hoje?
@@ -601,21 +653,21 @@
         <p><span data-i18n="support_label">Suporte e contato:</span> <a href="mailto:francesc.j.hernandez@uv.es">francesc.j.hernandez@uv.es</a></p>
     </footer>
 
-    <!-- SCRIPT -->
+    <!-- SCRIPT DE LA APLICACIÓN -->
     <script>
-        // CONFIGURACIÓN DE SUPABASE CON TUS CREDENCIALES EXACTAS
+        // CONFIGURACIÓN DE SUPABASE
         const SUPABASE_URL = "https://amswkfdhwashotagrhfo.supabase.co"; 
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtc3drZmRod2FzaG90YWdyaGZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ4MjU5NzYsImV4cCI6MjEwMDQwMTk3Nn0.FOo2A10jlM5MlANoZqaiwTkI8K2AkCgbBLAlJnH4FO4";
         const supabaseClient = (window.supabase && SUPABASE_URL !== "") 
             ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) 
             : null;
 
-        // URL del Endpoint Backend del Agente IA
-        const AGENT_API_URL = "https://tu-api-backend.vercel.app/api/chat";
+        // URL DE TU CLOUDFLARE WORKER (Sustituye por tu endpoint real desplegado)
+        const AGENT_API_URL = "https://tu-worker.tu-subdomain.workers.dev";
 
         let allPrompts = [];
 
-        // DICCIONARIOS MULTILINGÜES (5 IDIOMAS)
+        // DICCIONARIOS MULTILINGÜES (5 IDIOMAS) - Valenciano ajustado estrictamente ("aquest", "francés")
         const translations = {
             pt: {
                 page_title: "REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA",
@@ -625,6 +677,7 @@
                 sec1_desc: "Plataforma pública dedicada à promoção da igualdade, inclusão e inovação didática através da Inteligência Artificial na educação.",
                 sec2_title: "👨‍👩‍👧‍👦 PARA AS FAMÍLIAS",
                 sec2_desc: "Consulte suas dúvidas sobre apoio socioeducativo, direitos e recursos de inclusão através do nosso Agente de IA:",
+                suggestions_title: "💡 Sugestões de perguntas frequentes:",
                 sec2_ph: "Escreva aqui a sua consulta para a IA...",
                 sec2_btn: "Enviar ➔",
                 chat_welcome: "Olá! Sou o assistente de IA socioeducativo. Como posso ajudar a sua família hoje?",
@@ -666,6 +719,7 @@
                 sec1_desc: "Plataforma pública dedicada a la promoción de la igualdad, inclusión e innovación didáctica a través de la Inteligencia Artificial en educación.",
                 sec2_title: "👨‍👩‍👧‍👦 PARA LAS FAMILIAS",
                 sec2_desc: "Consulte sus dudas sobre apoyo socioeducativo, derechos y recursos de inclusión a través de nuestro Agente de IA:",
+                suggestions_title: "💡 Sugerencias de preguntas frecuentes:",
                 sec2_ph: "Escriba aquí su consulta para la IA...",
                 sec2_btn: "Enviar ➔",
                 chat_welcome: "¡Hola! Soy el asistente de IA socioeducativo. ¿Cómo puedo ayudar a su familia hoy?",
@@ -707,6 +761,7 @@
                 sec1_desc: "Public platform dedicated to promoting equality, inclusion, and educational innovation through Artificial Intelligence in education.",
                 sec2_title: "👨‍👩‍👧‍👦 FOR FAMILIES",
                 sec2_desc: "Ask your questions about socio-educational support, rights, and inclusion resources through our AI Agent:",
+                suggestions_title: "💡 Suggested frequent questions:",
                 sec2_ph: "Type your query for the AI here...",
                 sec2_btn: "Send ➔",
                 chat_welcome: "Hello! I am the socio-educational AI assistant. How can I help your family today?",
@@ -748,6 +803,7 @@
                 sec1_desc: "Plateforme publique dédiée à la promotion de l'égalité, de l'inclusion et de l'innovation pédagogique grâce à l'Intelligence Artificielle dans l'éducation.",
                 sec2_title: "👨‍👩‍👧‍👦 POUR LES FAMILLES",
                 sec2_desc: "Posez vos questions sur le soutien socio-éducatif, les droits et les ressources d'inclusion via notre Agent IA :",
+                suggestions_title: "💡 Suggestions de questions fréquentes :",
                 sec2_ph: "Écrivez ici votre question pour l'IA...",
                 sec2_btn: "Envoyer ➔",
                 chat_welcome: "Bonjour ! Je suis l'assistant IA socio-éducatif. Comment puis-je aider votre famille aujourd'hui ?",
@@ -789,6 +845,7 @@
                 sec1_desc: "Plataforma pública dedicada a la promoció de la igualtat, inclusió i innovació didàctica mitjançant la Intel·ligència Artificial en educació.",
                 sec2_title: "👨‍👩‍👧‍👦 PER A LES FAMÍLIES",
                 sec2_desc: "Consulteu els vostres dubtes sobre suport socioeducatiu, drets i recursos d'inclusió mitjançant el nostre Agent d'IA:",
+                suggestions_title: "💡 Suggeriments de preguntes freqüents:",
                 sec2_ph: "Escriviu ací la vostra consulta per a la IA...",
                 sec2_btn: "Enviar ➔",
                 chat_welcome: "Hola! Sóc l'assistent d'IA socioeducatiu. Com puc ajudar a la vostra família hui?",
@@ -848,6 +905,13 @@
             });
         }
 
+        // FUNCIÓN PARA INSERTAR LAS SUGERENCIAS EN EL CAMPO DE TEXTO
+        function useSuggestion(text) {
+            const inputEl = document.getElementById('family-query');
+            inputEl.value = text;
+            inputEl.focus();
+        }
+
         // CHAT INTERACTIVO CON AGENTE IA (FAMILIAS)
         async function queryFamilyAI() {
             const inputEl = document.getElementById('family-query');
@@ -864,13 +928,13 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
-                        message: query,
-                        lang: document.documentElement.lang || 'pt'
+                        pregunta: query,
+                        lang: document.documentElement.lang || 'pt-br'
                     })
                 });
 
                 const data = await response.json();
-                document.getElementById(loadingId).textContent = data.reply || "Resposta recebida do Agente IA.";
+                document.getElementById(loadingId).textContent = data.resposta || data.reply || "Resposta recebida do Agente IA.";
             } catch (error) {
                 console.error("Erro na API do Agente IA:", error);
                 document.getElementById(loadingId).textContent = "Sua consulta foi registrada. Conexão com o banco de dados do Agente IA em configuração.";
@@ -910,7 +974,7 @@
             window.location.href = `mailto:francesc.j.hernandez@uv.es?subject=${subject}&body=${body}`;
         }
 
-        // LECTURA DE PROMPTS DESDE LA NUEVA TABLA
+        // LECTURA DE PROMPTS DESDE SUPABASE
         async function fetchPrompts() {
             if (supabaseClient) {
                 try {
@@ -982,10 +1046,10 @@
                 renderPrompts(filtered);
             });
 
-            // INSERCIÓN DE PROMPTS EN LA NUEVA TABLA
+            // INSERCIÓN DE PROMPTS EN SUPABASE
             document.getElementById('add-prompt-form').addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const title = document.getElementById('new-prompt-title').value;
+                const title = document.getElementById('new-prompt-title-val'] || document.getElementById('new-prompt-title').value;
                 const author = document.getElementById('new-prompt-author').value;
                 const category = document.getElementById('new-prompt-category').value;
                 const body = document.getElementById('new-prompt-body').value;
