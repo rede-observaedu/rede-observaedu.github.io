@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="page_title">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA</title>
-    <!-- Supabase JS Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
@@ -17,6 +16,8 @@
             --text-main: #0f172a;
             --text-muted: #475569;
             --border-color: #e2e8f0;
+            --error-red: #dc2626;
+            --error-bg: #fef2f2;
         }
 
         * {
@@ -34,7 +35,6 @@
             min-height: 100vh;
         }
 
-        /* CABECERA */
         header {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #ffffff;
@@ -72,7 +72,6 @@
             letter-spacing: -0.01em;
         }
 
-        /* Selector de Idioma (5 idiomas) */
         .lang-selector {
             display: flex;
             gap: 0.25rem;
@@ -107,7 +106,6 @@
             box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
         }
 
-        /* CONTENEDOR PRINCIPAL */
         main {
             max-width: 950px;
             width: 100%;
@@ -119,7 +117,6 @@
             gap: 2rem;
         }
 
-        /* TARJETAS SECCION */
         .card {
             background-color: var(--card-bg);
             border-radius: 16px;
@@ -145,7 +142,6 @@
             padding-bottom: 0.5rem;
         }
 
-        /* PRESENTACION Y FOTO */
         .image-wrapper {
             width: 100%;
             display: flex;
@@ -177,7 +173,6 @@
             font-size: 1.05rem;
         }
 
-        /* SUGERENCIAS ANTES DEL CUADRO DE CHAT */
         .chat-suggestions {
             background-color: #f1f5f9;
             border: 1px dashed var(--primary-blue);
@@ -219,7 +214,6 @@
             border-color: var(--primary-blue);
         }
 
-        /* ESTILOS DEL CHAT IA */
         .chat-box {
             background-color: var(--bg-light);
             border: 1px solid var(--border-color);
@@ -238,6 +232,7 @@
             border-radius: 10px;
             font-size: 0.95rem;
             line-height: 1.4;
+            word-break: break-word;
         }
 
         .bot-msg {
@@ -254,6 +249,14 @@
             border-bottom-right-radius: 2px;
         }
 
+        .error-msg {
+            background-color: var(--error-bg);
+            color: var(--error-red);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border: 1px solid #fecaca;
+        }
+
         .chat-input-container {
             display: flex;
             gap: 0.5rem;
@@ -263,7 +266,6 @@
             flex: 1;
         }
 
-        /* FORMULARIOS E INPUTS */
         .form-group {
             display: flex;
             flex-direction: column;
@@ -290,7 +292,6 @@
             border-color: var(--primary-blue);
         }
 
-        /* BOTONES */
         .btn-primary {
             background-color: var(--primary-blue);
             color: #ffffff;
@@ -308,9 +309,14 @@
             text-decoration: none;
         }
 
-        .btn-primary:hover {
+        .btn-primary:hover:not(:disabled) {
             background-color: var(--blue-hover);
             transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         .btn-dark {
@@ -322,7 +328,6 @@
             background-color: #1e293b;
         }
 
-        /* DOCENTES & PROMPTS LIST */
         .prompts-header {
             display: flex;
             justify-content: space-between;
@@ -370,7 +375,6 @@
             background-color: #15803d;
         }
 
-        /* RELATORIOS GRID */
         .project-info-box {
             font-size: 0.95rem;
             color: var(--text-muted);
@@ -418,7 +422,6 @@
             color: var(--text-muted);
         }
 
-        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -441,7 +444,6 @@
             gap: 1rem;
         }
 
-        /* FOOTER */
         footer {
             text-align: center;
             padding: 2rem 1rem;
@@ -463,18 +465,45 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .lang-selector {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            h1 {
+                font-size: 1rem;
+            }
+            .card {
+                padding: 1.25rem;
+            }
+            .chat-msg {
+                max-width: 90%;
+            }
+            .relatorios-grid {
+                grid-template-columns: 1fr;
+            }
+            .prompts-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
+<base target="_blank">
 </head>
 <body>
 
-    <!-- CABECERA MULTILINGÜE -->
     <header>
         <div class="header-container">
             <div class="logo-title">
                 <span class="logo-icon">🎓</span>
                 <h1 data-i18n="header_title">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA</h1>
             </div>
-            
+
             <div class="lang-selector">
                 <button onclick="setLanguage('pt')" id="btn-pt" class="lang-btn active">Português</button>
                 <button onclick="setLanguage('es')" id="btn-es" class="lang-btn">Castellano</button>
@@ -487,10 +516,8 @@
 
     <main>
 
-        <!-- SECCIÓN 1: PRESENTACIÓN Y FOTO -->
         <section class="card">
             <div class="image-wrapper">
-                <!-- Imagen enlazada correctamente desde el mismo repositorio GitHub Pages -->
                 <img src="image.jpg" alt="Observatório de Igualdade Educativa">
                 <span class="image-caption" data-i18n="img_credit">Imagem UNESCO / Projecte Observatório</span>
             </div>
@@ -500,11 +527,10 @@
             </p>
         </section>
 
-        <!-- SECCIÓN 2: PARA LAS FAMILIAS (CHAT INTERACTIVO IA CON SUGERENCIAS TRADUCIDAS) -->
         <section class="card" style="border-top-color: #10b981;">
             <h2 class="card-title" data-i18n="sec2_title">👨‍👩‍👧‍👦 PARA AS FAMÍLIAS</h2>
             <p data-i18n="sec2_desc">Consulte suas dúvidas sobre apoio socioeducativo, direitos e recursos de inclusão através do nosso Agente de IA:</p>
-            
+
             <div class="chat-suggestions">
                 <p class="suggestions-title" data-i18n="suggestions_title">💡 Sugestões de perguntas frequentes:</p>
                 <div class="suggestion-chips" id="suggestion-chips-container"></div>
@@ -522,14 +548,13 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 3: PARA LOS DOCENTES (PROMPTS-MAESTROS) -->
         <section class="card" style="border-top-color: var(--primary-blue);">
             <div class="prompts-header">
                 <h2 class="card-title" style="border-bottom:none;" data-i18n="sec3_title">👩‍🏫 PARA OS DOCENTES</h2>
                 <button class="btn-primary btn-dark" id="btn-open-modal" data-i18n="sec3_upload_btn">📤 Carregar Prompt-Mestre</button>
             </div>
             <p data-i18n="sec3_desc">Acesse e compartilhe prompts-mestres para elaborar programações didáticas adaptadas e inclusivas:</p>
-            
+
             <div class="form-group">
                 <input type="text" id="search-prompts" data-i18n-ph="sec3_search_ph" placeholder="Pesquisar prompts por palavra-chave, matéria ou autor...">
             </div>
@@ -537,11 +562,10 @@
             <div id="prompts-container" class="prompts-list"></div>
         </section>
 
-        <!-- SECCIÓN 4: PARA LOS AYUNTAMIENTOS -->
         <section class="card" style="border-top-color: #f59e0b;">
             <h2 class="card-title" data-i18n="sec4_title">🏛️ PARA OS MUNICÍPIOS</h2>
             <p data-i18n="sec4_desc">Formulário para a elaboração de Planos Educativos Municipais e assessoria socioeducativa:</p>
-            
+
             <form id="muni-form" onsubmit="sendMuniForm(event)">
                 <div class="form-group" style="margin-bottom: 1rem;">
                     <label data-i18n="sec4_lbl_muni">Nome do Município / Prefeitura:</label>
@@ -563,15 +587,14 @@
             </form>
         </section>
 
-        <!-- SECCIÓN 5: PROYECTO Y RELATORIOS -->
         <section class="card" style="border-top-color: #8b5cf6;">
             <h2 class="card-title" data-i18n="sec5_title">📄 SOBRE O PROJETO E RELATÓRIOS</h2>
-            
+
             <div class="project-info-box">
                 <p><strong>Projeto Tecnova.</strong> Responsável: Luciana do Nascimento, professor da Universidade Estadual da Paraíba</p>
                 <p>Os relatórios podem ser baixados em formato PDF compactado em ZIP.</p>
             </div>
-            
+
             <div class="relatorios-grid">
                 <a href="http://www.uv.es/mia1/relatorios/relatorio01.zip" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
@@ -697,7 +720,6 @@
 
     </main>
 
-    <!-- MODAL DE SUBIDA DE PROMPTS PARA DOCENTES -->
     <div id="upload-modal" class="modal">
         <div class="modal-content">
             <h3 data-i18n="modal_title">Carregar Prompt-Mestre</h3>
@@ -726,13 +748,11 @@
         </div>
     </div>
 
-    <!-- PIE DE PÁGINA -->
     <footer>
         <p data-i18n="footer_text">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA © 2026</p>
         <p><span data-i18n="support_label">Suporte e contato:</span> <a href="mailto:francesc.j.hernandez@uv.es">francesc.j.hernandez@uv.es</a></p>
     </footer>
 
-    <!-- SCRIPT DE LA APLICACIÓN -->
     <script>
         const SUPABASE_URL = "https://amswkfdhwashotagrhfo.supabase.co"; 
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtc3drZmRod2FzaG90YWdyaGZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ4MjU5NzYsImV4cCI6MjEwMDQwMTk3Nn0.FOo2A10jlM5MlANoZqaiwTkI8K2AkCgbBLAlJnH4FO4";
@@ -966,7 +986,7 @@
             const chipsContainer = document.getElementById('suggestion-chips-container');
             chipsContainer.innerHTML = '';
             const currentSuggestions = translations[selectedLang].suggestions_list || translations['pt'].suggestions_list;
-            
+
             currentSuggestions.forEach(text => {
                 const chipBtn = document.createElement('button');
                 chipBtn.type = 'button';
@@ -983,10 +1003,17 @@
             inputEl.focus();
         }
 
+        // CHAT INTERACTIVO CON AGENTE IA — MEJORADO CON MANEJO DE ERRORES REAL
         async function queryFamilyAI() {
             const inputEl = document.getElementById('family-query');
+            const btn = document.getElementById('btn-send-chat');
             const query = inputEl.value.trim();
             if (!query) return;
+
+            // Deshabilitar botón durante la carga
+            btn.disabled = true;
+            const originalText = btn.textContent;
+            btn.textContent = "...";
 
             appendMessage(query, 'user-msg');
             inputEl.value = '';
@@ -1003,15 +1030,45 @@
                     })
                 });
 
-                const data = await response.json();
-                document.getElementById(loadingId).textContent = data.resposta || data.reply || "Resposta recebida do Agente IA.";
+                let data;
+                const contentType = response.headers.get("content-type") || "";
+
+                if (contentType.includes("application/json")) {
+                    data = await response.json();
+                } else {
+                    const text = await response.text();
+                    throw new Error(`Respuesta no-JSON del servidor (HTTP ${response.status}): ${text.substring(0, 200)}`);
+                }
+
+                const loadingEl = document.getElementById(loadingId);
+
+                if (!response.ok) {
+                    // Error del worker (500, 502, 503, etc.)
+                    loadingEl.className = "chat-msg error-msg";
+                    loadingEl.textContent = (data.error || "Error desconocido del servidor") + 
+                        (data.detalle ? ` [Detalle: ${JSON.stringify(data.detalle).substring(0, 150)}]` : "");
+                } else if (data.error) {
+                    // El worker devolvió HTTP 200 pero con campo error (patrón Ausiàs March)
+                    loadingEl.className = "chat-msg error-msg";
+                    loadingEl.textContent = data.error;
+                } else {
+                    // Éxito
+                    loadingEl.textContent = data.resposta || data.reply || "Resposta recebida do Agente IA.";
+                }
+
             } catch (error) {
                 console.error("Erro na API do Agente IA:", error);
-                document.getElementById(loadingId).textContent = "Sua consulta foi registrada. Conexão com o banco de dados do Agente IA em configuração.";
-            }
+                const loadingEl = document.getElementById(loadingId);
+                loadingEl.className = "chat-msg error-msg";
+                loadingEl.textContent = "Erro de conexão: " + error.message;
+            } finally {
+                // Restaurar botón
+                btn.disabled = false;
+                btn.textContent = originalText;
 
-            const chatBox = document.getElementById('chat-box');
-            chatBox.scrollTop = chatBox.scrollHeight;
+                const chatBox = document.getElementById('chat-box');
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
         }
 
         function handleKeyPress(e) {
