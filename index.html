@@ -488,18 +488,16 @@
             </p>
         </section>
 
-        <!-- SECCIÓN 2: PARA LAS FAMILIAS (CHAT INTERACTIVO IA CON SUGERENCIAS) -->
+        <!-- SECCIÓN 2: PARA LAS FAMILIAS (CHAT INTERACTIVO IA CON SUGERENCIAS TRADUCIDAS) -->
         <section class="card" style="border-top-color: #10b981;">
             <h2 class="card-title" data-i18n="sec2_title">👨‍👩‍👧‍👦 PARA AS FAMÍLIAS</h2>
             <p data-i18n="sec2_desc">Consulte suas dúvidas sobre apoio socioeducativo, direitos e recursos de inclusão através do nosso Agente de IA:</p>
             
-            <!-- Sugerencias solicitadas antes del cuadro de chat -->
+            <!-- Sugerencias dinámicas traducidas automáticamente por idioma -->
             <div class="chat-suggestions">
                 <p class="suggestions-title" data-i18n="suggestions_title">💡 Sugestões de perguntas frequentes:</p>
-                <div class="suggestion-chips">
-                    <button type="button" class="chip" onclick="useSuggestion('¿Cómo lee mi hijo comparado con el estado?')">¿Cómo lee mi hijo comparado con el estado?</button>
-                    <button type="button" class="chip" onclick="useSuggestion('¿Qué municipios tienen mejor matemáticas del 9º año?')">¿Qué municipios tienen mejor matemáticas del 9º año?</button>
-                    <button type="button" class="chip" onclick="useSuggestion('Diferencia entre escuelas públicas y privadas en João Pessoa')">Diferencia entre escuelas públicas y privadas en João Pessoa</button>
+                <div class="suggestion-chips" id="suggestion-chips-container">
+                    <!-- S'injecta dinàmicament segons la llengua -->
                 </div>
             </div>
 
@@ -667,7 +665,7 @@
 
         let allPrompts = [];
 
-        // DICCIONARIOS MULTILINGÜES (5 IDIOMAS) - Valenciano ajustado estrictamente ("aquest", "francés")
+        // DICCIONARIOS MULTILINGÜES (Amb suggeriments adaptats a cada llengua)
         const translations = {
             pt: {
                 page_title: "REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA",
@@ -678,6 +676,11 @@
                 sec2_title: "👨‍👩‍👧‍👦 PARA AS FAMÍLIAS",
                 sec2_desc: "Consulte suas dúvidas sobre apoio socioeducativo, direitos e recursos de inclusão através do nosso Agente de IA:",
                 suggestions_title: "💡 Sugestões de perguntas frequentes:",
+                suggestions_list: [
+                    "Como o desempenho de leitura do meu filho se compara com o do estado?",
+                    "Quais municípios têm melhores notas em matemática no 9º ano?",
+                    "Qual é a diferença entre escolas públicas e privadas em João Pessoa?"
+                ],
                 sec2_ph: "Escreva aqui a sua consulta para a IA...",
                 sec2_btn: "Enviar ➔",
                 chat_welcome: "Olá! Sou o assistente de IA socioeducativo. Como posso ajudar a sua família hoje?",
@@ -720,6 +723,11 @@
                 sec2_title: "👨‍👩‍👧‍👦 PARA LAS FAMILIAS",
                 sec2_desc: "Consulte sus dudas sobre apoyo socioeducativo, derechos y recursos de inclusión a través de nuestro Agente de IA:",
                 suggestions_title: "💡 Sugerencias de preguntas frecuentes:",
+                suggestions_list: [
+                    "¿Cómo lee mi hijo comparado con el estado?",
+                    "¿Qué municipios tienen mejor matemáticas del 9º año?",
+                    "Diferencia entre escuelas públicas y privadas en João Pessoa"
+                ],
                 sec2_ph: "Escriba aquí su consulta para la IA...",
                 sec2_btn: "Enviar ➔",
                 chat_welcome: "¡Hola! Soy el asistente de IA socioeducativo. ¿Cómo puedo ayudar a su familia hoy?",
@@ -762,6 +770,11 @@
                 sec2_title: "👨‍👩‍👧‍👦 FOR FAMILIES",
                 sec2_desc: "Ask your questions about socio-educational support, rights, and inclusion resources through our AI Agent:",
                 suggestions_title: "💡 Suggested frequent questions:",
+                suggestions_list: [
+                    "How does my child's reading compare to the state average?",
+                    "Which municipalities have the best 9th-grade math scores?",
+                    "Difference between public and private schools in João Pessoa"
+                ],
                 sec2_ph: "Type your query for the AI here...",
                 sec2_btn: "Send ➔",
                 chat_welcome: "Hello! I am the socio-educational AI assistant. How can I help your family today?",
@@ -804,6 +817,11 @@
                 sec2_title: "👨‍👩‍👧‍👦 POUR LES FAMILLES",
                 sec2_desc: "Posez vos questions sur le soutien socio-éducatif, les droits et les ressources d'inclusion via notre Agent IA :",
                 suggestions_title: "💡 Suggestions de questions fréquentes :",
+                suggestions_list: [
+                    "Comment la lecture de mon enfant se compare-t-elle à celle de l'État ?",
+                    "Quelles municipalités ont les meilleures notes en mathématiques en 9e année ?",
+                    "Différence entre les écoles publiques et privées à João Pessoa"
+                ],
                 sec2_ph: "Écrivez ici votre question pour l'IA...",
                 sec2_btn: "Envoyer ➔",
                 chat_welcome: "Bonjour ! Je suis l'assistant IA socio-éducatif. Comment puis-je aider votre famille aujourd'hui ?",
@@ -846,6 +864,11 @@
                 sec2_title: "👨‍👩‍👧‍👦 PER A LES FAMÍLIES",
                 sec2_desc: "Consulteu els vostres dubtes sobre suport socioeducatiu, drets i recursos d'inclusió mitjançant el nostre Agent d'IA:",
                 suggestions_title: "💡 Suggeriments de preguntes freqüents:",
+                suggestions_list: [
+                    "Com llegeix el meu fill comparat amb l'estat?",
+                    "Quins municipis tenen millors matemàtiques de 9é curs?",
+                    "Diferència entre escoles públiques i privades a João Pessoa"
+                ],
                 sec2_ph: "Escriviu ací la vostra consulta per a la IA...",
                 sec2_btn: "Enviar ➔",
                 chat_welcome: "Hola! Sóc l'assistent d'IA socioeducatiu. Com puc ajudar a la vostra família hui?",
@@ -881,7 +904,7 @@
             }
         };
 
-        // CAMBIO DE IDIOMA
+        // CAMBIO DE IDIOMA (Actualiza textos i suggeriments automàticament)
         function setLanguage(lang) {
             const selectedLang = translations[lang] ? lang : 'pt';
             document.documentElement.lang = selectedLang === 'pt' ? 'pt-br' : selectedLang;
@@ -890,6 +913,7 @@
             const activeBtn = document.getElementById(`btn-${selectedLang}`);
             if (activeBtn) activeBtn.classList.add('active');
 
+            // Traducció d'elements estàtics
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[selectedLang] && translations[selectedLang][key]) {
@@ -902,6 +926,20 @@
                 if (translations[selectedLang] && translations[selectedLang][key]) {
                     el.placeholder = translations[selectedLang][key];
                 }
+            });
+
+            // Actualització dinàmica de les preguntes suggerides segons la llengua activa
+            const chipsContainer = document.getElementById('suggestion-chips-container');
+            chipsContainer.innerHTML = '';
+            const currentSuggestions = translations[selectedLang].suggestions_list || translations['pt'].suggestions_list;
+            
+            currentSuggestions.forEach(text => {
+                const chipBtn = document.createElement('button');
+                chipBtn.type = 'button';
+                chipBtn.className = 'chip';
+                chipBtn.textContent = text;
+                chipBtn.onclick = () => useSuggestion(text);
+                chipsContainer.appendChild(chipBtn);
             });
         }
 
