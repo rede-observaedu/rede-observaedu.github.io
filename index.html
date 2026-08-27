@@ -371,6 +371,17 @@
         }
 
         /* RELATORIOS GRID */
+        .project-info-box {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+        }
+
         .relatorios-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -479,7 +490,8 @@
         <!-- SECCIÓN 1: PRESENTACIÓN Y FOTO -->
         <section class="card">
             <div class="image-wrapper">
-                <img src="https://www.uv.es/mia1/luciana/image.jpg" alt="Observatório de Igualdade Educativa">
+                <!-- Imagen enlazada correctamente desde el mismo repositorio GitHub Pages -->
+                <img src="image.jpg" alt="Observatório de Igualdade Educativa">
                 <span class="image-caption" data-i18n="img_credit">Imagem UNESCO / Projecte Observatório</span>
             </div>
             <h2 class="card-title" data-i18n="sec1_title">Rede Observatório de Igualdade Educativa Inclusiva</h2>
@@ -493,12 +505,9 @@
             <h2 class="card-title" data-i18n="sec2_title">👨‍👩‍👧‍👦 PARA AS FAMÍLIAS</h2>
             <p data-i18n="sec2_desc">Consulte suas dúvidas sobre apoio socioeducativo, direitos e recursos de inclusão através do nosso Agente de IA:</p>
             
-            <!-- Sugerencias dinámicas traducidas automáticamente por idioma -->
             <div class="chat-suggestions">
                 <p class="suggestions-title" data-i18n="suggestions_title">💡 Sugestões de perguntas frequentes:</p>
-                <div class="suggestion-chips" id="suggestion-chips-container">
-                    <!-- S'injecta dinàmicament segons la llengua -->
-                </div>
+                <div class="suggestion-chips" id="suggestion-chips-container"></div>
             </div>
 
             <div id="chat-box" class="chat-box">
@@ -525,9 +534,7 @@
                 <input type="text" id="search-prompts" data-i18n-ph="sec3_search_ph" placeholder="Pesquisar prompts por palavra-chave, matéria ou autor...">
             </div>
 
-            <div id="prompts-container" class="prompts-list">
-                <!-- Carga dinámica desde la tabla prompts_observaedu -->
-            </div>
+            <div id="prompts-container" class="prompts-list"></div>
         </section>
 
         <!-- SECCIÓN 4: PARA LOS AYUNTAMIENTOS -->
@@ -559,55 +566,129 @@
         <!-- SECCIÓN 5: PROYECTO Y RELATORIOS -->
         <section class="card" style="border-top-color: #8b5cf6;">
             <h2 class="card-title" data-i18n="sec5_title">📄 SOBRE O PROJETO E RELATÓRIOS</h2>
-            <p data-i18n="sec5_desc">Explore a documentação técnica e relatórios científicos do Observatório disponíveis para download:</p>
+            
+            <div class="project-info-box">
+                <p><strong>Projeto Tecnova.</strong> Responsável: Luciana do Nascimento, professor da Universidade Estadual da Paraíba</p>
+                <p>Os relatórios podem ser baixados em formato PDF compactado em ZIP.</p>
+            </div>
             
             <div class="relatorios-grid">
-                <a href="http://www.uv.es/fjhernan/relatorios/relatorio01.pdf" target="_blank" class="relatorio-card">
+                <a href="http://www.uv.es/mia1/relatorios/relatorio01.zip" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_1">Relatório 01</h4>
-                        <p>relatorio01.pdf</p>
+                        <h4>Relatòrio 01</h4>
+                        <p>Ajuste e refinamento dos modelos para adaptação ao contexto educacional do município</p>
                     </div>
                     <span>📥</span>
                 </a>
-                <a href="http://www.uv.es/fjhernan/relatorios/relatorio02.pdf" target="_blank" class="relatorio-card">
+                <a href="http://www.uv.es/mia1/relatorios/relatorio02.zip" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_2">Relatório 02</h4>
-                        <p>relatorio02.pdf</p>
+                        <h4>Relatòrio 02</h4>
+                        <p>Desenvolvimento inicial dos modelos RNA para análise educacional</p>
                     </div>
                     <span>📥</span>
                 </a>
-                <a href="http://www.uv.es/fjhernan/relatorios/relatorio03.pdf" target="_blank" class="relatorio-card">
+                <a href="http://www.uv.es/mia1/relatorios/relatorio03.zip" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_3">Relatório 03</h4>
-                        <p>relatorio03.pdf</p>
+                        <h4>Relatòrio 03</h4>
+                        <p>Implementação e Melhoramento das Redes Neurais</p>
                     </div>
                     <span>📥</span>
                 </a>
-                <a href="http://www.uv.es/fjhernan/relatorios/relatorio04.pdf" target="_blank" class="relatorio-card">
+                <a href="http://www.uv.es/mia1/relatorios/relatorio04.zip" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_4">Relatório 04</h4>
-                        <p>relatorio04.pdf</p>
+                        <h4>Relatòrio 04</h4>
+                        <p>Criação da interface interativa e testes de usabilidade</p>
                     </div>
                     <span>📥</span>
                 </a>
-                <a href="http://www.uv.es/fjhernan/relatorios/relatorio05.pdf" target="_blank" class="relatorio-card">
+                <a href="http://www.uv.es/mia1/relatorios/relatorio05.zip" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_5">Relatório 05</h4>
-                        <p>relatorio05.pdf</p>
+                        <h4>Relatòrio 05</h4>
+                        <p>Criação de Conteúdos e Materiais Didáticos para Professores e Educadores</p>
                     </div>
                     <span>📥</span>
                 </a>
-                <a href="http://www.uv.es/fjhernan/relatorios/relatorio06.pdf" target="_blank" class="relatorio-card">
+                <a href="http://www.uv.es/mia1/relatorios/relatorio06.zip" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_6">Relatório 06</h4>
-                        <p>relatorio06.pdf</p>
+                        <h4>Relatòrio 06</h4>
+                        <p>Criação de repositórios de fontes documentais para processamento por IA Generativa</p>
                     </div>
                     <span>📥</span>
                 </a>
-                <a href="http://www.uv.es/fjhernan/relatorios/relatorio07.pdf" target="_blank" class="relatorio-card">
+                <a href="http://www.uv.es/mia1/relatorios/relatorio07.zip" target="_blank" class="relatorio-card">
                     <div class="relatorio-info">
-                        <h4 data-i18n="relatorio_7">Relatório 07</h4>
-                        <p>relatorio07.pdf</p>
+                        <h4>Relatòrio 07</h4>
+                        <p>Desenvolvimento de chatbots para simular consultas de pais</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/mia1/relatorios/relatorio08.zip" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4>Relatòrio 08</h4>
+                        <p>Desenvolvimento automatizado de materiais didáticos</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/mia1/relatorios/relatorio09.zip" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4>Relatório 09</h4>
+                        <p>Ajustes Finais e Validação do Sistema</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/mia1/relatorios/relatorio10.zip" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4>Relatòrio 10</h4>
+                        <p>Conclusão e validação final do sistema</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/mia1/relatorios/relatorio11.zip" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4>Relatòrio 11</h4>
+                        <p>Planejamento, agendamento e reunião com grupos de interesse (Prefeituras, secretarias de educação e escolas)</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/mia1/relatorios/relatorio12.zip" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4>Relatòrio 12</h4>
+                        <p>Aplicação Piloto</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/mia1/relatorios/relatorio13.zip" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4>Relatòrio 13</h4>
+                        <p>Aplicação de Projeto Piloto com grupo controlado</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/mia1/relatorios/relatorio14.zip" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4>Relatòrio 14</h4>
+                        <p>Conclusão e validação final do sistema</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/mia1/relatorios/relatorio15.zip" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4>Relatòrio 15</h4>
+                        <p>Implementação do sistema e feedback dos usuários reais e virtuais</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/mia1/relatorios/relatorio16.zip" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4>Relatòrio 16</h4>
+                        <p>Ajustes nos modelos RNA e IA Generativa com base no feedback</p>
+                    </div>
+                    <span>📥</span>
+                </a>
+                <a href="http://www.uv.es/mia1/relatorios/relatorio17.zip" target="_blank" class="relatorio-card">
+                    <div class="relatorio-info">
+                        <h4>Relatòrio 17</h4>
+                        <p>Modelagem de relacionamentos entre pais, mães e comunidade educativa</p>
                     </div>
                     <span>📥</span>
                 </a>
@@ -653,19 +734,15 @@
 
     <!-- SCRIPT DE LA APLICACIÓN -->
     <script>
-        // CONFIGURACIÓN DE SUPABASE
         const SUPABASE_URL = "https://amswkfdhwashotagrhfo.supabase.co"; 
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtc3drZmRod2FzaG90YWdyaGZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ4MjU5NzYsImV4cCI6MjEwMDQwMTk3Nn0.FOo2A10jlM5MlANoZqaiwTkI8K2AkCgbBLAlJnH4FO4";
         const supabaseClient = (window.supabase && SUPABASE_URL !== "") 
             ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) 
             : null;
 
-        // URL DE TU CLOUDFLARE WORKER ACTUALIZADA
         const AGENT_API_URL = "https://paraiba.francesc-j-hernandez.workers.dev";
-
         let allPrompts = [];
 
-        // DICCIONARIOS MULTILINGÜES (Amb suggeriments adaptats a cada llengua)
         const translations = {
             pt: {
                 page_title: "REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA",
@@ -696,14 +773,6 @@
                 sec4_lbl_notes: "Necessidades ou observações:",
                 sec4_btn: "Enviar Solicitação por E-mail",
                 sec5_title: "📄 SOBRE O PROJETO E RELATÓRIOS",
-                sec5_desc: "Explore a documentação técnica e relatórios científicos do Observatório disponíveis para download:",
-                relatorio_1: "Relatório 01",
-                relatorio_2: "Relatório 02",
-                relatorio_3: "Relatório 03",
-                relatorio_4: "Relatório 04",
-                relatorio_5: "Relatório 05",
-                relatorio_6: "Relatório 06",
-                relatorio_7: "Relatório 07",
                 modal_title: "Carregar Prompt-Mestre",
                 modal_lbl_title: "Título do Prompt",
                 modal_lbl_author: "Autor / Docente",
@@ -743,14 +812,6 @@
                 sec4_lbl_notes: "Necesidades u observaciones:",
                 sec4_btn: "Enviar Solicitud por Correo",
                 sec5_title: "📄 SOBRE EL PROYECTO E INFORMES",
-                sec5_desc: "Explore la documentación técnica e informes científicos del Observatorio disponibles para descarga:",
-                relatorio_1: "Informe 01",
-                relatorio_2: "Informe 02",
-                relatorio_3: "Informe 03",
-                relatorio_4: "Informe 04",
-                relatorio_5: "Informe 05",
-                relatorio_6: "Informe 06",
-                relatorio_7: "Informe 07",
                 modal_title: "Cargar Prompt-Maestro",
                 modal_lbl_title: "Título del Prompt",
                 modal_lbl_author: "Autor / Docente",
@@ -790,14 +851,6 @@
                 sec4_lbl_notes: "Needs or observations:",
                 sec4_btn: "Send Request via Email",
                 sec5_title: "📄 ABOUT THE PROJECT AND REPORTS",
-                sec5_desc: "Explore technical documentation and scientific reports from the Observatory available for download:",
-                relatorio_1: "Report 01",
-                relatorio_2: "Report 02",
-                relatorio_3: "Report 03",
-                relatorio_4: "Report 04",
-                relatorio_5: "Report 05",
-                relatorio_6: "Report 06",
-                relatorio_7: "Report 07",
                 modal_title: "Upload Master-Prompt",
                 modal_lbl_title: "Prompt Title",
                 modal_lbl_author: "Author / Teacher",
@@ -837,14 +890,6 @@
                 sec4_lbl_notes: "Besoins ou observations :",
                 sec4_btn: "Envoyer la Demande par E-mail",
                 sec5_title: "📄 À PROPOS DU PROJET ET RAPPORTS",
-                sec5_desc: "Explorez la documentation technique et les rapports scientifiques de l'Observatoire disponibles au téléchargement :",
-                relatorio_1: "Rapport 01",
-                relatorio_2: "Rapport 02",
-                relatorio_3: "Rapport 03",
-                relatorio_4: "Rapport 04",
-                relatorio_5: "Rapport 05",
-                relatorio_6: "Rapport 06",
-                relatorio_7: "Rapport 07",
                 modal_title: "Publier un Prompt-Maître",
                 modal_lbl_title: "Titre du Prompt",
                 modal_lbl_author: "Auteur / Enseignant",
@@ -884,14 +929,6 @@
                 sec4_lbl_notes: "Necessitats o observacions:",
                 sec4_btn: "Enviar Sol·licitud per Correu",
                 sec5_title: "📄 SOBRE EL PROJECTE I INFORMES",
-                sec5_desc: "Exploreu la documentació tècnica i informes científics de l'Observatori disponibles per a descarrega en aquest apartat:",
-                relatorio_1: "Informe 01",
-                relatorio_2: "Informe 02",
-                relatorio_3: "Informe 03",
-                relatorio_4: "Informe 04",
-                relatorio_5: "Informe 05",
-                relatorio_6: "Informe 06",
-                relatorio_7: "Informe 07",
                 modal_title: "Carregar Prompt-Mestre",
                 modal_lbl_title: "Títol del Prompt",
                 modal_lbl_author: "Autor / Docent",
@@ -904,7 +941,6 @@
             }
         };
 
-        // CAMBIO DE IDIOMA (Actualiza textos i suggeriments automàticament)
         function setLanguage(lang) {
             const selectedLang = translations[lang] ? lang : 'pt';
             document.documentElement.lang = selectedLang === 'pt' ? 'pt-br' : selectedLang;
@@ -913,7 +949,6 @@
             const activeBtn = document.getElementById(`btn-${selectedLang}`);
             if (activeBtn) activeBtn.classList.add('active');
 
-            // Traducció d'elements estàtics
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[selectedLang] && translations[selectedLang][key]) {
@@ -928,7 +963,6 @@
                 }
             });
 
-            // Actualització dinàmica de les preguntes suggerides segons la llengua activa
             const chipsContainer = document.getElementById('suggestion-chips-container');
             chipsContainer.innerHTML = '';
             const currentSuggestions = translations[selectedLang].suggestions_list || translations['pt'].suggestions_list;
@@ -943,14 +977,12 @@
             });
         }
 
-        // FUNCIÓN PARA INSERTAR LAS SUGERENCIAS EN EL CAMPO DE TEXTO
         function useSuggestion(text) {
             const inputEl = document.getElementById('family-query');
             inputEl.value = text;
             inputEl.focus();
         }
 
-        // CHAT INTERACTIVO CON AGENTE IA (FAMILIAS)
         async function queryFamilyAI() {
             const inputEl = document.getElementById('family-query');
             const query = inputEl.value.trim();
@@ -998,7 +1030,6 @@
             return msgId;
         }
 
-        // ENVÍO DE FORMULARIO PARA MUNICIPIOS
         function sendMuniForm(e) {
             e.preventDefault();
             const muni = document.getElementById('muni-name').value;
@@ -1012,7 +1043,6 @@
             window.location.href = `mailto:francesc.j.hernandez@uv.es?subject=${subject}&body=${body}`;
         }
 
-        // LECTURA DE PROMPTS DESDE SUPABASE
         async function fetchPrompts() {
             if (supabaseClient) {
                 try {
@@ -1066,7 +1096,6 @@
             });
         }
 
-        // INICIALIZACIÓN DE LA PÁGINA Y MODAL
         document.addEventListener('DOMContentLoaded', () => {
             setLanguage('pt');
             fetchPrompts();
@@ -1084,7 +1113,6 @@
                 renderPrompts(filtered);
             });
 
-            // INSERCIÓN DE PROMPTS EN SUPABASE
             document.getElementById('add-prompt-form').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const title = document.getElementById('new-prompt-title').value;
