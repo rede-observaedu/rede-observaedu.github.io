@@ -1,1 +1,183 @@
+Dicionário - Planilhas de resultados Saeb 2023	
+Variável	Descrição
+ANO_SAEB	Ano de aplicação do Saeb
+ID	nível de agragação do Resultado
+CO_UF	Código da Unidade da Federação
+NO_UF	Nome da Unidade da Federação
+CO_MUNICIPIO	Código do Municipio
+NO_MUNICIPIO	Nome do Município
+DEPENDENCIA_ADM	Dependência administrativa
+LOCALIZACAO	Indicador de resultados referente a alunos da localização urbana ou rural
+CAPITAL	Indicador de resultados referente a alunos da Capital ou do Interior
+PC_ALFABETIZADO	Percentual de alunos alfabetizados
+MEDIA_2_LP	Média em Língua Portuguesa 2º ano
+MEDIA_2_MT	Média em Matemática 2º ano
+MEDIA_5_LP	Média em Língua Portuguesa 5º ano
+MEDIA_5_MT	Média em Matemática 5º ano
+MEDIA_5_CH	Média em Ciências Humanas 5º ano
+MEDIA_5_CN	Média em Ciências da Natureza 5º ano
+MEDIA_9_LP	Média em Língua Portuguesa 9º ano
+MEDIA_9_MT	Média em Matemática 9º ano
+MEDIA_9_CH	Média em Ciências Humanas 9º ano
+MEDIA_9_CN	Média em Ciências da Natureza 9º ano
+MEDIA_12_LP	Média em Língua Portuguesa 3ª/4ª série do ensino médio tradicional
+MEDIA_12_MT	Média em Matemática 3ª/4ª série do ensino médio tradicional
+MEDIA_13_LP	Média em Língua Portuguesa 3ª/4ª série do ensino médio integrado
+MEDIA_13_MT	Média em Matemática 3ª/4ª série do ensino médio integrado
+MEDIA_14_LP	Média em Língua Portuguesa 3ª/4ª série do ensino médio tradicional ou integrado
+MEDIA_14_MT	Média em Matemática 3ª/4ª série do ensino médio tradicional ou integrado
+nivel_0_LP2	Percentual de alunos do 2º ano com Desempenho menor que 650 em Língua Portuguesa
+nivel_1_LP2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 650 e menor que 675 em Língua Portuguesa
+nivel_2_LP2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 675 e menor que 700 em Língua Portuguesa
+nivel_3_LP2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 700 e menor que 725 em Língua Portuguesa
+nivel_4_LP2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 725 e menor que 750 em Língua Portuguesa
+nivel_5_LP2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 750 e menor que 775 em Língua Portuguesa
+nivel_6_LP2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 775 e menor que 800 em Língua Portuguesa
+nivel_7_LP2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 800 e menor que 825 em Língua Portuguesa
+nivel_8_LP2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 825 em Língua Portuguesa
+nivel_0_MT2	Percentual de alunos do 2º ano com Desempenho menor que 650 em Matemática
+nivel_1_MT2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 650 e menor que 675 em Matemática
+nivel_2_MT2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 675 e menor que 700 em Matemática
+nivel_3_MT2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 700 e menor que 725 em Matemática
+nivel_4_MT2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 725 e menor que 750 em Matemática
+nivel_5_MT2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 750 e menor que 775 em Matemática
+nivel_6_MT2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 775 e menor que 800 em Matemática
+nivel_7_MT2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 800 e menor que 825 em Matemática
+nivel_8_MT2	Percentual de alunos do 2º ano com Desempenho maior ou igual a 825 em Matemática
+nivel_0_LP5	Percentual de alunos do 5º ano com Desempenho menor que 125 em Língua Portuguesa
+nivel_1_LP5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 125 e menor que 150 em Língua Portuguesa
+nivel_2_LP5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 150 e menor que 175 em Língua Portuguesa
+nivel_3_LP5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 175 e menor que 200 em Língua Portuguesa
+nivel_4_LP5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 200 e menor que 225 em Língua Portuguesa
+nivel_5_LP5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 225 e menor que 250 em Língua Portuguesa
+nivel_6_LP5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 250 e menor que 275 em Língua Portuguesa
+nivel_7_LP5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 275 e menor que 300 em Língua Portuguesa
+nivel_8_LP5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 300 e menor que 325 em Língua Portuguesa
+nivel_9_LP5	Percentual de alunos do 5º ano com Desempenho maior ou igual que 325 em Língua Portuguesa
+nivel_0_MT5	Percentual de alunos do 5º ano com Desempenho menor que 125 em Matemática
+nivel_1_MT5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 125 e menor que 150 em Matemática
+nivel_2_MT5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 150 e menor que 175 em Matemática
+nivel_3_MT5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 175 e menor que 200 em Matemática
+nivel_4_MT5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 200 e menor que 225 em Matemática
+nivel_5_MT5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 225 e menor que 250 em Matemática
+nivel_6_MT5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 250 e menor que 275 em Matemática
+nivel_7_MT5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 275 e menor que 300 em Matemática
+nivel_8_MT5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 300 e menor que 325 em Matemática
+nivel_9_MT5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 325 e menor que 350 em Matemática
+nivel_10_MT5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 350 em Matemática
+nivel_0_CH5	Percentual de alunos do 5º ano com Desempenho menor que 200 em Ciências Humanas
+nivel_1_CH5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 200 e menor que 225 em Ciências Humanas
+nivel_2_CH5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 225 e menor que 250 em Ciências Humanas
+nivel_3_CH5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 250 e menor que 275 em Ciências Humanas
+nivel_4_CH5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 275 e menor que 300 em Ciências Humanas
+nivel_5_CH5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 300 e menor que 325 em Ciências Humanas
+nivel_6_CH5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 325 e menor que 350 em Ciências Humanas
+nivel_7_CH5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 350 em Ciências Humanas
+nivel_0_CN5	Percentual de alunos do 5º ano com Desempenho menor que 200 em Ciências da Natureza
+nivel_1_CN5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 200 e menor que 225 em Ciências da Natureza
+nivel_2_CN5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 225 e menor que 250 em Ciências da Natureza
+nivel_3_CN5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 250 e menor que 275 em Ciências da Natureza
+nivel_4_CN5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 275 e menor que 300 em Ciências da Natureza
+nivel_5_CN5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 300 e menor que 325 em Ciências da Natureza
+nivel_6_CN5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 325 e menor que 350 em Ciências da Natureza
+nivel_7_CN5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 350 e menor que 375 em Ciências da Natureza
+nivel_8_CN5	Percentual de alunos do 5º ano com Desempenho maior ou igual a 375 em Ciências da Natureza
+nivel_0_LP9	Percentual de alunos do 9º ano com Desempenho menor que 200 em Língua Portuguesa
+nivel_1_LP9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 200 e menor que 225 em Língua Portuguesa
+nivel_2_LP9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 225 e menor que 250 em Língua Portuguesa
+nivel_3_LP9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 250 e menor que 275 em Língua Portuguesa
+nivel_4_LP9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 275 e menor que 300 em Língua Portuguesa
+nivel_5_LP9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 300 e menor que 325 em Língua Portuguesa
+nivel_6_LP9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 325 e menor que 350 em Língua Portuguesa
+nivel_7_LP9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 350 e menor que 375 em Língua Portuguesa
+nivel_8_LP9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 375 em Língua Portuguesa
+nivel_0_MT9	Percentual de alunos do 9º ano com Desempenho menor que 200 em Matemática
+nivel_1_MT9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 200 e menor que 225 em Matemática
+nivel_2_MT9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 225 e menor que 250 em Matemática
+nivel_3_MT9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 250 e menor que 275 em Matemática
+nivel_4_MT9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 275 e menor que 300 em Matemática
+nivel_5_MT9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 300 e menor que 325 em Matemática
+nivel_6_MT9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 325 e menor que 350 em Matemática
+nivel_7_MT9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 350 e menor que 375 em Matemática
+nivel_8_MT9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 375 e menor que 400 em Matemática
+nivel_9_MT9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 400 em Matemática
+nivel_0_CH9	Percentual de alunos do 9º ano com Desempenho menor que 200 em Ciências Humanas
+nivel_1_CH9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 200 e menor que 225 em Ciências Humanas
+nivel_2_CH9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 225 e menor que 250 em Ciências Humanas
+nivel_3_CH9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 250 e menor que 275 em Ciências Humanas
+nivel_4_CH9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 275 e menor que 300 em Ciências Humanas
+nivel_5_CH9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 300 e menor que 325 em Ciências Humanas
+nivel_6_CH9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 325 e menor que 350 em Ciências Humanas
+nivel_7_CH9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 350 e menor que 375 em Ciências Humanas
+nivel_8_CH9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 375 e menor que 400 em Ciências Humanas
+nivel_9_CH9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 400 em Ciências Humanas
+nivel_0_CN9	Percentual de alunos do 9º ano com Desempenho menor que 200 em Ciências da Natureza
+nivel_1_CN9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 200 e menor que 225 em Ciências da Natureza
+nivel_2_CN9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 225 e menor que 250 em Ciências da Natureza
+nivel_3_CN9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 250 e menor que 275 em Ciências da Natureza
+nivel_4_CN9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 275 e menor que 300 em Ciências da Natureza
+nivel_5_CN9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 300 e menor que 325 em Ciências da Natureza
+nivel_6_CN9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 325 e menor que 350 em Ciências da Natureza
+nivel_7_CN9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 350 e menor que 375 em Ciências da Natureza
+nivel_8_CN9	Percentual de alunos do 9º ano com Desempenho maior ou igual a 375 em Ciências da Natureza
+nivel_0_LP12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho menor que 225 em Língua Portuguesa
+nivel_1_LP12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 225 e menor que 250 em Língua Portuguesa
+nivel_2_LP12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 250 e menor que 275 em Língua Portuguesa
+nivel_3_LP12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 275 e menor que 300 em Língua Portuguesa
+nivel_4_LP12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 300 e menor que 325 em Língua Portuguesa
+nivel_5_LP12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 325 e menor que 350 em Língua Portuguesa
+nivel_6_LP12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 350 e menor que 375 em Língua Portuguesa
+nivel_7_LP12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 375 e menor que 400 em Língua Portuguesa
+nivel_8_LP12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 400 em Língua Portuguesa
+nivel_0_MT12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho menor que 225 em Matemática
+nivel_1_MT12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 225 e menor que 250 em Matemática
+nivel_2_MT12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 250 e menor que 275 em Matemática
+nivel_3_MT12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 275 e menor que 300 em Matemática
+nivel_4_MT12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 300 e menor que 325 em Matemática
+nivel_5_MT12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 325 e menor que 350 em Matemática
+nivel_6_MT12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 350 e menor que 375 em Matemática
+nivel_7_MT12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 375 e menor que 400 em Matemática
+nivel_8_MT12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 400 e menor que 425 em Matemática
+nivel_9_MT12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 425 e menor que 450 em Matemática
+nivel_10_MT12	Percentual de alunos de 3ª/4ª série do ensino médio tradicional com Desempenho maior ou igual a 450 em Matemática
+nivel_0_LP13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho menor que 225 em Língua Portuguesa
+nivel_1_LP13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 225 e menor que 250 em Língua Portuguesa
+nivel_2_LP13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 250 e menor que 275 em Língua Portuguesa
+nivel_3_LP13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 275 e menor que 300 em Língua Portuguesa
+nivel_4_LP13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 300 e menor que 325 em Língua Portuguesa
+nivel_5_LP13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 325 e menor que 350 em Língua Portuguesa
+nivel_6_LP13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 350 e menor que 375 em Língua Portuguesa
+nivel_7_LP13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 375 e menor que 400 em Língua Portuguesa
+nivel_8_LP13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 400 em Língua Portuguesa
+nivel_0_MT13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho menor que 225 em Matemática
+nivel_1_MT13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 225 e menor que 250 em Matemática
+nivel_2_MT13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 250 e menor que 275 em Matemática
+nivel_3_MT13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 275 e menor que 300 em Matemática
+nivel_4_MT13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 300 e menor que 325 em Matemática
+nivel_5_MT13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 325 e menor que 350 em Matemática
+nivel_6_MT13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 350 e menor que 375 em Matemática
+nivel_7_MT13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 375 e menor que 400 em Matemática
+nivel_8_MT13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 400 e menor que 425 em Matemática
+nivel_9_MT13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 425 e menor que 450 em Matemática
+nivel_10_MT13	Percentual de alunos de 3ª/4ª série do ensino médio integrado com Desempenho maior ou igual a 450 em Matemática
+nivel_0_LP14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho menor que 225 em Língua Portuguesa
+nivel_1_LP14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 225 e menor que 250 em Língua Portuguesa
+nivel_2_LP14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 250 e menor que 275 em Língua Portuguesa
+nivel_3_LP14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 275 e menor que 300 em Língua Portuguesa
+nivel_4_LP14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 300 e menor que 325 em Língua Portuguesa
+nivel_5_LP14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 325 e menor que 350 em Língua Portuguesa
+nivel_6_LP14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 350 e menor que 375 em Língua Portuguesa
+nivel_7_LP14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 375 e menor que 400 em Língua Portuguesa
+nivel_8_LP14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 400 em Língua Portuguesa
+nivel_0_MT14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho menor que 225 em Matemática
+nivel_1_MT14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 225 e menor que 250 em Matemática
+nivel_2_MT14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 250 e menor que 275 em Matemática
+nivel_3_MT14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 275 e menor que 300 em Matemática
+nivel_4_MT14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 300 e menor que 325 em Matemática
+nivel_5_MT14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 325 e menor que 350 em Matemática
+nivel_6_MT14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 350 e menor que 375 em Matemática
+nivel_7_MT14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 375 e menor que 400 em Matemática
+nivel_8_MT14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 400 e menor que 425 em Matemática
+nivel_9_MT14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 425 e menor que 450 em Matemática
+nivel_10_MT14	Percentual de alunos de 3ª/4ª série do ensino médio com Desempenho maior ou igual a 450 em Matemática
 
