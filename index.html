@@ -4,6 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rede Observatório de Igualdade Educativa Inclusiva</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+        header {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #1a365d;
+            margin-top: 0;
+        }
+        nav {
+            margin: 15px 0;
+        }
+        nav a {
+            color: #2b6cb0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        nav ul li a {
+            color: #4a5568;
+            font-weight: normal;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #2b6cb0;
+        }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 8px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+        }
+        .form-container {
+            background-color: #edf2f7;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            max-width: 520px;
+        }
+        ul.relatorios {
+            list-style: none;
+            padding: 0;
+        }
+        ul.relatorios li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        ul.relatorios a {
+            color: #3182ce;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,10 +111,10 @@
                 <li><a href="#">Català / Valencià</a></li>
             </ul>
         </nav>
-        <img src="unesco-projecte.png" alt="Imagem UNESCO / Projecte Observatório">
+        <img src="image.jpg" alt="Imagem UNESCO / Projecte Observatório" style="max-width: 100%; height: auto;">
     </header>
 
-    <main>
+    <main class="container">
         <section>
             <h2>Rede Observatório de Igualdade Educativa Inclusiva</h2>
             <hr>
@@ -31,103 +124,63 @@
         <section>
             <h3>👩‍🏫 PARA OS DOCENTES</h3>
             <hr>
-            <button>📤 Carregar Prompt-Mestre</button>
+            <button class="btn">📤 Carregar Prompt-Mestre</button>
             <p>Acesse e compartilhe prompts-mestres para elaborar programações didáticas adaptadas e inclusivas:</p>
             
-            <!-- Modal / Formulario Docentes -->
-            <div id="modal-docentes">
+            <div class="form-container">
                 <h4>Carregar Prompt-Mestre (Docentes)</h4>
                 <form>
-                    <label>Título do Prompt: <input type="text" name="titulo"></label><br>
-                    <label>Autor / Docente: <input type="text" name="autor"></label><br>
-                    <label>Matéria / Nível: <input type="text" name="materia"></label><br>
-                    <label>Conteúdo do Prompt-Mestre: <textarea name="conteudo"></textarea></label><br>
-                    <button type="button">Cancelar</button>
-                    <button type="submit">Salvar Prompt</button>
+                    <div class="form-group">
+                        <label>Título do Prompt:</label>
+                        <input type="text" name="titulo">
+                    </div>
+                    <div class="form-group">
+                        <label>Autor / Docente:</label>
+                        <input type="text" name="autor">
+                    </div>
+                    <div class="form-group">
+                        <label>Matéria / Nível:</label>
+                        <input type="text" name="materia">
+                    </div>
+                    <div class="form-group">
+                        <label>Conteúdo do Prompt-Mestre:</label>
+                        <textarea name="conteudo" rows="4"></textarea>
+                    </div>
+                    <button type="button" class="btn" style="background-color: #a0aec0;">Cancelar</button>
+                    <button type="submit" class="btn">Salvar Prompt</button>
                 </form>
             </div>
         </section>
 
-        <section>
+        <section style="margin-top: 30px;">
             <h2>📄 SOBRE O PROJETO E RELATÓRIOS</h2>
             <hr>
             <p>Projeto Tecnova. Responsável: Luciana do Nascimento, professor da Universidade Estadual da Paraíba</p>
             <p>Os relatórios podem ser baixados em formato PDF compactado em ZIP.</p>
             
-            <ul>
-                <li>
-                    <strong>Relatório 01:</strong> Ajuste e refinamento dos modelos para adaptação ao contexto educacional do município
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio01.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 02:</strong> Desenvolvimento inicial dos modelos RNA para análise educacional
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio02.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 03:</strong> Implementação e Melhoramento das Redes Neurais
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio03.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 04:</strong> Criação da interface interativa e testes de usabilidade
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio04.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 05:</strong> Criação de Conteúdos e Materiais Didáticos para Professores e Educadores
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio05.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 06:</strong> Criação de repositórios de fontes documentais para processamento por IA Generativa
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio06.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 07:</strong> Desenvolvimento de chatbots para simular consultas de pais
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio07.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 08:</strong> Desenvolvimento automatizado de materiais didáticos
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio08.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 09:</strong> Ajustes Finais e Validação do Sistema
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio09.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 10:</strong> Conclusão e validação final do sistema
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio10.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 11:</strong> Planejamento, agendamento e reunião com grupos de interesse (Prefeituras, secretarias de educação e escolas)
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio11.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 12:</strong> Aplicação Piloto
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio12.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 13:</strong> Aplicação de Projeto Piloto com grupo controlado
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio13.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 14:</strong> Conclusão e validação final do sistema
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio14.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 15:</strong> Implementação do sistema e feedback dos usuários reais e virtuais
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio15.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 16:</strong> Ajustes nos modelos RNA e IA Generativa com base no feedback
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio16.zip">📥 Baixar ZIP</a>
-                </li>
-                <li>
-                    <strong>Relatório 17:</strong> Modelagem de relacionamentos entre pais, mães e comunidade educativa
-                    <a href="http://www.uv.es/mia1/relatorios/relatorio17.zip">📥 Baixar ZIP</a>
-                </li>
+            <ul class="relatorios">
+                <li><strong>Relatório 01:</strong> Ajuste e refinamento dos modelos para adaptação ao contexto educacional do município <a href="http://www.uv.es/mia1/relatorios/relatorio01.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 02:</strong> Desenvolvimento inicial dos modelos RNA para análise educacional <a href="http://www.uv.es/mia1/relatorios/relatorio02.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 03:</strong> Implementação e Melhoramento das Redes Neurais <a href="http://www.uv.es/mia1/relatorios/relatorio03.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 04:</strong> Criação da interface interativa e testes de usabilidade <a href="http://www.uv.es/mia1/relatorios/relatorio04.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 05:</strong> Criação de Conteúdos e Materiais Didáticos para Professores e Educadores <a href="http://www.uv.es/mia1/relatorios/relatorio05.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 06:</strong> Criação de repositórios de fontes documentais para processamento por IA Generativa <a href="http://www.uv.es/mia1/relatorios/relatorio06.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 07:</strong> Desenvolvimento de chatbots para simular consultas de pais <a href="http://www.uv.es/mia1/relatorios/relatorio07.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 08:</strong> Desenvolvimento automatizado de materiais didáticos <a href="http://www.uv.es/mia1/relatorios/relatorio08.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 09:</strong> Ajustes Finais e Validação do Sistema <a href="http://www.uv.es/mia1/relatorios/relatorio09.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 10:</strong> Conclusão e validação final do sistema <a href="http://www.uv.es/mia1/relatorios/relatorio10.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 11:</strong> Planejamento, agendamento e reunião com grupos de interesse <a href="http://www.uv.es/mia1/relatorios/relatorio11.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 12:</strong> Aplicação Piloto <a href="http://www.uv.es/mia1/relatorios/relatorio12.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 13:</strong> Aplicação de Projeto Piloto com grupo controlado <a href="http://www.uv.es/mia1/relatorios/relatorio13.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 14:</strong> Conclusão e validação final do sistema <a href="http://www.uv.es/mia1/relatorios/relatorio14.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 15:</strong> Implementação do sistema e feedback dos usuários <a href="http://www.uv.es/mia1/relatorios/relatorio15.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 16:</strong> Ajustes nos modelos RNA e IA Generativa <a href="http://www.uv.es/mia1/relatorios/relatorio16.zip">📥 Baixar ZIP</a></li>
+                <li><strong>Relatório 17:</strong> Modelagem de relacionamentos entre pais, mães e comunidade educativa <a href="http://www.uv.es/mia1/relatorios/relatorio17.zip">📥 Baixar ZIP</a></li>
             </ul>
         </section>
     </main>
 
-    <footer>
+    <footer style="text-align: center; padding: 20px; color: #718096;">
         <p>REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA</p>
     </footer>
 </body>
