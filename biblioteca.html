@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca colaborativa de artigos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-title">
+                <span class="logo-icon">🎓</span>
+                <h1 id="header-title">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA</h1>
+            </div>
+            <div class="lang-selector">
+                <button data-lang="pt" id="btn-pt" class="lang-btn active">Português</button>
+                <button data-lang="es" id="btn-es" class="lang-btn">Castellano</button>
+                <button data-lang="en" id="btn-en" class="lang-btn">English</button>
+                <button data-lang="fr" id="btn-fr" class="lang-btn">Français</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="card content-card">
+            <a class="back-link" href="index.html" style="color: var(--primary-blue);">⬅ ⬅ Voltar à plataforma</a>
+
+            <h2>🤝 Biblioteca colaborativa de artigos</h2>
+            <p>Espaço colaborativo onde a comunidade pode partilhar artigos científicos e textos de divulgação relacionados com o projeto.</p>
+            <ul>
+                <li><em>[Adicionar aqui os artigos enviados pela comunidade]</em></li>
+            </ul>
+            <h3>📤 Enviar um artigo</h3>
+            <form>
+                <div class="form-group">
+                    <label>Título do artigo:</label>
+                    <input type="text" name="titulo">
+                </div>
+                <div class="form-group">
+                    <label>Autor(es):</label>
+                    <input type="text" name="autores">
+                </div>
+                <div class="form-group">
+                    <label>Resumo / descrição:</label>
+                    <textarea name="resumo" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+
+        </div>
+    </main>
+    <footer>
+        <p>Projeto realizado por CEMEI. Consultoria em Gestão Educacional e Pesquisa Ltda. Pesquisadora Principal: Luciana Silva do Nascimento. Com o apoio da FAPES PB. Ministério da Ciência, Tecnologia e Inovação. Finep Inovação e Pesquisa. Programa TECNOVA, contrato nº 26.92.2025.</p>
+    </footer>
+</body>
+</html>
