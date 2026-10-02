@@ -1,262 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="doc-title">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA</title>
-
-    <!-- Google Analytics (Sustituye G-XXXXXXXXXX por tu ID de medición) -->
-    <script async="" src="./REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA_files/js"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-
-    <style>
-        :root {
-            --primary-green: #166534;
-            --primary-blue: #2563eb;
-            --blue-hover: #1d4ed8;
-            --bg-dark: #0f172a;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --border-color: #e2e8f0;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        body {
-            background-color: var(--primary-green);
-            color: var(--text-main);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #ffffff;
-            padding: 1.25rem 2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .header-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .logo-title {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .logo-icon {
-            font-size: 1.8rem;
-        }
-
-        h1 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #f8fafc;
-        }
-
-        .lang-selector {
-            display: flex;
-            gap: 0.25rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 4px;
-            border-radius: 8px;
-            flex-wrap: wrap;
-        }
-
-        .lang-btn {
-            background: transparent;
-            border: none;
-            color: #cbd5e1;
-            padding: 0.4rem 0.75rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .lang-btn:hover {
-            color: #ffffff;
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .lang-btn.active {
-            background-color: var(--primary-blue);
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        main {
-            max-width: 800px;
-            width: 100%;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-            flex: 1;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
-            border-top: 6px solid var(--primary-blue);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 1.5rem;
-        }
-
-        .project-img {
-            width: 100%;
-            max-height: 380px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            color: var(--bg-dark);
-            font-weight: 700;
-        }
-
-        .btn-github {
-            background-color: var(--primary-blue);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-github:hover {
-            background-color: var(--blue-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.5rem 1rem;
-            color: #94a3b8;
-            font-size: 0.75rem;
-            line-height: 1.6;
-            background-color: var(--bg-dark);
-            margin-top: auto;
-        }
-    </style>
+    <title>Rede Observatório de Igualdade Educativa Inclusiva</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
 <body>
-
     <header>
         <div class="header-container">
             <div class="logo-title">
                 <span class="logo-icon">🎓</span>
                 <h1 id="header-title">REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA</h1>
             </div>
-
             <div class="lang-selector">
-                <button onclick="setLanguage('pt')" id="btn-pt" class="lang-btn active">Português</button>
-                <button onclick="setLanguage('es')" id="btn-es" class="lang-btn">Castellano</button>
-                <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">English</button>
-                <button onclick="setLanguage('fr')" id="btn-fr" class="lang-btn">Français</button>
+                <button data-lang="pt" id="btn-pt" class="lang-btn active">Português</button>
+                <button data-lang="es" id="btn-es" class="lang-btn">Castellano</button>
+                <button data-lang="en" id="btn-en" class="lang-btn">English</button>
+                <button data-lang="fr" id="btn-fr" class="lang-btn">Français</button>
             </div>
         </div>
     </header>
-
     <main>
         <div class="card">
-            <img src="./image.jpg" alt="Observatorio" class="project-img">
-            <h2 class="card-title" id="main-title">Rede Observatório de Igualdade Educativa Inclusiva</h2>
+            <img src="image.jpg" alt="Observatório" class="project-img">
+            <h2 class="card-title" data-i18n="mainTitle">Rede Observatório de Igualdade Educativa Inclusiva</h2>
 
-            <a href="https://rede-observaedu.github.io/" class="btn-github" id="btn-access" onclick="trackClick()">
-                Acessar a Plataforma ➔
-            </a>
+            <nav class="nav-grid">
+                <a class="nav-btn" href="info.html"><span class="icon">ℹ️</span><span data-i18n="navInfo">Informação sobre o projeto</span></a>
+                <a class="nav-btn" href="equipo.html"><span class="icon">👥</span><span data-i18n="navEquipo">Equipe de pesquisa e contato</span></a>
+                <a class="nav-btn" href="repositorio.html"><span class="icon">📚</span><span data-i18n="navRepo">Repositório de prompts-mestres</span></a>
+                <a class="nav-btn" href="libros.html"><span class="icon">📖</span><span data-i18n="navLibros">Livros especializados</span></a>
+                <a class="nav-btn" href="biblioteca.html"><span class="icon">🤝</span><span data-i18n="navBiblio">Biblioteca colaborativa de artigos</span></a>
+            </nav>
+
+            <div class="chat-window">
+                <div class="chat-header">🤖 <span data-i18n="chatTitle">Pergunte ao nosso agente IA</span></div>
+                <div class="chat-log" id="chat-log"></div>
+                <div class="chat-input-bar">
+                    <input type="text" id="chat-input" data-i18n-placeholder="chatPlaceholder" placeholder="Escreva a sua pergunta..." autocomplete="off">
+                    <button class="chat-icon-btn" id="chat-mic" data-i18n-title="micTitle" title="Falar (microfone)">🎤</button>
+                    <button class="chat-icon-btn" id="chat-send" data-i18n-title="sendTitle" title="Enviar">➤</button>
+                </div>
+            </div>
         </div>
     </main>
-
     <footer>
-        <p id="footer-text">Projeto realizado por CEMEI. Consultoria em Gestão Educacional e Pesquisa Ltda. Pesquisadora Principal: Luciana Silva do Nascimento. Com o apoio da FAPES PB. Ministério da Ciência, Tecnologia e Inovação. Finep Inovação e Pesquisa. Programa TECNOVA, contrato nº 26.92.2025.</p>
+        <p>Projeto realizado por CEMEI. Consultoria em Gestão Educacional e Pesquisa Ltda. Pesquisadora Principal: Luciana Silva do Nascimento. Com o apoio da FAPES PB. Ministério da Ciência, Tecnologia e Inovação. Finep Inovação e Pesquisa. Programa TECNOVA, contrato nº 26.92.2025.</p>
     </footer>
-
-    <script>
-        const translations = {
-            pt: {
-                title: "REDE OBSERVATÓRIO DE IGUALDADE EDUCATIVA INCLUSIVA",
-                mainTitle: "Rede Observatório de Igualdade Educativa Inclusiva",
-                btnText: "Acessar a Plataforma ➔",
-                footer: "Projeto realizado por CEMEI. Consultoria em Gestão Educacional e Pesquisa Ltda. Pesquisadora Principal: Luciana Silva do Nascimento. Com o apoio da FAPES PB. Ministério da Ciência, Tecnologia e Inovação. Finep Inovação e Pesquisa. Programa TECNOVA, contrato nº 26.92.2025."
-            },
-            es: {
-                title: "RED OBSERVATORIO DE IGUALDAD EDUCATIVA INCLUSIVA",
-                mainTitle: "Red Observatorio de Igualdad Educativa Inclusiva",
-                btnText: "Acceder a la Plataforma ➔",
-                footer: "Projeto realizado por CEMEI. Consultoria em Gestão Educacional e Pesquisa Ltda. Pesquisadora Principal: Luciana Silva do Nascimento. Com o apoio da FAPES PB. Ministério da Ciência, Tecnologia e Inovação. Finep Inovação e Pesquisa. Programa TECNOVA, contrato nº 26.92.2025."
-            },
-            en: {
-                title: "INCLUSIVE EDUCATIONAL EQUALITY OBSERVATORY NETWORK",
-                mainTitle: "Inclusive Educational Equality Observatory Network",
-                btnText: "Access the Platform ➔",
-                footer: "Projeto realizado por CEMEI. Consultoria em Gestão Educacional e Pesquisa Ltda. Pesquisadora Principal: Luciana Silva do Nascimento. Com o apoio da FAPES PB. Ministério da Ciência, Tecnologia e Inovação. Finep Inovação e Pesquisa. Programa TECNOVA, contrato nº 26.92.2025."
-            },
-            fr: {
-                title: "RÉSEAU OBSERVATOIRE D'ÉGALITÉ ÉDUCATIVE INCLUSIVE",
-                mainTitle: "Réseau Observatoire d'Égalité Éducative Inclusive",
-                btnText: "Accéder à la Plateforme ➔",
-                footer: "Projeto realizado por CEMEI. Consultoria em Gestão Educacional e Pesquisa Ltda. Pesquisadora Principal: Luciana Silva do Nascimento. Com o apoio da FAPES PB. Ministério da Ciência, Tecnologia e Inovação. Finep Inovação e Pesquisa. Programa TECNOVA, contrato nº 26.92.2025."
-            }
-        };
-
-        function setLanguage(lang) {
-            const data = translations[lang] || translations.pt;
-            document.documentElement.lang = lang;
-
-            document.getElementById('doc-title').innerText = data.title;
-            document.getElementById('header-title').innerText = data.title;
-            document.getElementById('main-title').innerText = data.mainTitle;
-            document.getElementById('btn-access').innerHTML = data.btnText;
-            document.getElementById('footer-text').innerText = data.footer;
-
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`btn-${lang}`).classList.add('active');
-        }
-
-        function trackClick() {
-            if (typeof gtag === 'function') {
-                gtag('event', 'click_github_link', {
-                    'event_category': 'Outbound Link',
-                    'event_label': 'Redirección a GitHub Pages'
-                });
-            }
-        }
-    </script>
-
 </body>
 </html>
