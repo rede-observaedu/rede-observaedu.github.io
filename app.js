@@ -1,8 +1,24 @@
 /* REDE OBSERVATÓRIO — script compartido: idiomas + agente IA */
 const CONFIG = {
     /* URL del backend del agente IA. Déjala vacía para usar el mensaje de espera. */
-    apiUrl: ''
+    apiUrl: 'https://observatorio.francesc-j-hernandez.workers.dev'
 };
+
+/* marked.js se carga de forma dinámica; si falla el CDN, el chat
+   muestra las respuestas como texto plano (sin formato). */
+let mdReady = false;
+(function loadMarkdown() {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js';
+    s.onload = () => { mdReady = true; };
+    s.onerror = () => { mdReady = false; };
+    document.head.appendChild(s);
+})();
+
+function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+              .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
 
 const I18N = {
     pt: {
@@ -112,17 +128,55 @@ function initLang() {
 }
 
 /* ---------- Agente IA ---------- */
+let chatBusy = false;
+let micSupported = true; // false cuando el navegador no soporta Web Speech API
+
 function addMsg(text, who) {
     const log = document.getElementById('chat-log');
     if (!log) return;
     const div = document.createElement('div');
     div.className = 'chat-msg ' + who;
-    div.innerText = text;
+    if (who === 'agent' && mdReady) {
+        // El texto se escapa ANTES de parsearlo: ni el usuario ni el agente
+        // pueden inyectar HTML arbitrario en el chat.
+        div.innerHTML = marked.parse(escapeHtml(text));
+    } else {
+        div.innerText = text;
+    }
     log.appendChild(div);
     log.scrollTop = log.scrollHeight;
+    return div;
+}
+
+function showTyping() {
+    const log = document.getElementById('chat-log');
+    if (!log) return null;
+    const div = document.createElement('div');
+    div.className = 'chat-typing';
+    div.id = 'chat-typing';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+    return div;
+}
+
+function hideTyping() {
+    const div = document.getElementById('chat-typing');
+    if (div) div.remove();
+}
+
+function setChatBusy(busy) {
+    chatBusy = busy;
+    const input = document.getElementById('chat-input');
+    const send = document.getElementById('chat-send');
+    const mic = document.getElementById('chat-mic');
+    if (input) input.disabled = busy;
+    if (send) send.disabled = busy;
+    if (mic && micSupported) mic.disabled = busy; // no se toca si el navegador no soporta voz
 }
 
 async function sendChat() {
+    if (chatBusy) return; // no se permite enviar otro mensaje hasta que conteste
     const input = document.getElementById('chat-input');
     const text = input.value.trim();
     if (!text) return;
@@ -130,16 +184,24 @@ async function sendChat() {
     input.value = '';
 
     if (CONFIG.apiUrl) {
+        setChatBusy(true);
+        showTyping();
         try {
             const resp = await fetch(CONFIG.apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: text, lang: currentLang })
             });
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
             const data = await resp.json();
+            hideTyping();
             addMsg(data.reply || t('agentWaiting'), 'agent');
         } catch (e) {
+            hideTyping();
             addMsg(t('agentError'), 'agent');
+        } finally {
+            setChatBusy(false);
+            if (input) input.focus();
         }
     } else {
         setTimeout(() => addMsg(t('agentWaiting'), 'agent'), 500);
@@ -157,6 +219,7 @@ function initMic() {
 
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) {
+        micSupported = false;
         micBtn.disabled = true;
         micBtn.title = t('micUnsupported');
         return;
